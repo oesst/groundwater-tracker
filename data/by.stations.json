@@ -1,0 +1,13 @@
+{
+  "_note": "Seed station master for Bavaria (GKD/LfU). 'path' is the stable per-station URL path; the adapter appends '/messwerte'. Coordinates here are APPROXIMATE (town-level) and should be replaced with exact well coordinates via `npm run build:by-stations` (LfU INSPIRE download service). Expand this list the same way to cover all ~620 wells.",
+  "stations": [
+    { "id": "by-16268", "name": "Poing D 83",        "county": "EBE", "lat": 48.171, "lon": 11.821, "path": "/de/grundwasser/oberesstockwerk/inn/poing-d-83-16268" },
+    { "id": "by-25617", "name": "Geretsried 177",     "county": "TÖL", "lat": 47.858, "lon": 11.480, "path": "/de/grundwasser/oberesstockwerk/bayern/geretsried-177-25617" },
+    { "id": "by-14795", "name": "Dorfen B 3",         "county": "ED",  "lat": 48.267, "lon": 12.156, "path": "/de/grundwasser/oberesstockwerk/inn/dorfen-b-3-14795" },
+    { "id": "by-8182",  "name": "Augsburg 596",       "county": "A",   "lat": 48.370, "lon": 10.898, "path": "/de/grundwasser/oberesstockwerk/bayern/augsburg-596-8182" },
+    { "id": "by-5159",  "name": "Hallstadt 16",       "county": "BA",  "lat": 49.928, "lon": 10.884, "path": "/de/grundwasser/oberesstockwerk/bayern/hallstadt-16-5159" },
+    { "id": "by-42665", "name": "Altenbuch GWM A002", "county": "MIL", "lat": 49.801, "lon": 9.313,  "path": "/de/grundwasser/oberesstockwerk/passau/altenbuch-gwm-a002-42665" },
+    { "id": "by-21139", "name": "Sendling 301",       "county": "M",   "lat": 48.112, "lon": 11.546, "path": "/de/grundwasser/oberesstockwerk/inn/sendling-301-21139" },
+    { "id": "by-17195", "name": "Keidenzell B 8",     "county": "FÜ",  "lat": 49.552, "lon": 10.772, "path": "/de/grundwasser/tieferestockwerke/elbe/keidenzell-b-8-17195" }
+  ]
+}

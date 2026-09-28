@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grundwasser Deutschland</title>
+<style>
+  :root{
+    --bg:#e9eff2;--paper:#fff;--ink:#12242c;--ink-soft:#4a5f68;--line:#d6e0e4;--line-strong:#b9c8cd;--accent:#0f6fa8;
+    --c-vhigh:#12496e;--c-high:#4e97c4;--c-normal:#6fb98f;--c-low:#e7a13a;--c-vlow:#c24634;--c-none:#9aa7ad;
+    --radius:10px;--shadow:0 1px 2px rgba(18,36,44,.06),0 8px 24px rgba(18,36,44,.06);
+    --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1280px;margin:0 auto;padding:20px 18px 56px}
+  header.top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+  h1{font-size:clamp(24px,3.6vw,36px);font-weight:700;letter-spacing:-.02em;margin:0}
+  .sub{margin-top:5px;color:var(--ink-soft);font-size:13.5px;max-width:62ch}.sub b{color:var(--ink);font-weight:600}
+  .banner{margin:10px 0 14px;border-radius:var(--radius);padding:11px 14px;font-size:13px;border:1px solid #f0d8a8;background:#fff8ec;color:#6b5210;display:none}
+  .banner.show{display:block}.banner b{color:#4d3a06}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:14px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .mapwrap{position:relative;overflow:hidden;border-radius:var(--radius)}
+  canvas#map{display:block;width:100%;height:600px;cursor:grab;touch-action:none}canvas#map:active{cursor:grabbing}
+  @media (max-width:900px){canvas#map{height:440px}}
+  .overlay{position:absolute;left:14px;top:14px;display:flex;flex-direction:column;gap:8px}
+  .seg{display:inline-flex;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:8px;overflow:hidden;backdrop-filter:blur(4px)}
+  .seg button{all:unset;cursor:pointer;padding:7px 12px;font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+  .seg button.on{background:var(--accent);color:#fff}
+  .hint{position:absolute;right:14px;bottom:12px;font-size:11.5px;color:var(--ink-soft);background:rgba(255,255,255,.8);border-radius:6px;padding:4px 8px}
+  .tip{position:absolute;pointer-events:none;background:#12242c;color:#eaf2f5;font-size:12px;padding:6px 9px;border-radius:7px;transform:translate(-50%,calc(-100% - 10px));white-space:nowrap;opacity:0;transition:opacity .1s;z-index:5}.tip b{color:#fff}
+  .card{padding:14px 16px;border-bottom:1px solid var(--line)}.card:last-child{border-bottom:none}
+  .card h3{margin:0 0 10px;font-size:13px;font-weight:700;color:var(--ink-soft)}
+  .ribbon{display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--line-strong);background:#f2f5f6}
+  .ribbon .s{height:100%;transition:flex-grow .5s;cursor:pointer}
+  .legend{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+  .legend .it{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;user-select:none}.legend .it.off{opacity:.4}
+  .legend .sw{width:13px;height:13px;border-radius:3px;flex:none}.legend .n{margin-left:auto;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}.kv dt{color:var(--ink-soft)}.kv dd{margin:0;font-weight:500;text-align:right}
+  .badge{display:inline-block;padding:2px 9px;border-radius:999px;color:#fff;font-weight:600;font-size:12px}
+  .muted{color:var(--ink-soft);font-size:12.5px}.detail-empty{color:var(--ink-soft);font-size:13px;padding:6px 0}
+  .src{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid #eef3f4;font-size:12.5px}.src:first-of-type{border-top:none}
+  .src .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .src .dot.ok{background:#2f9e6f}.src .dot.seed{background:#7a86c9}.src .dot.stale{background:var(--c-low)}.src .dot.down{background:var(--c-vlow)}
+  .src .nm{font-weight:600}.src .meta{color:var(--ink-soft)}.src .cnt{margin-left:auto;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  select{width:100%;border:1px solid var(--line-strong);border-radius:8px;background:#fbfdfe;padding:8px 10px;font:inherit;color:var(--ink)}
+  footer.foot{margin-top:18px;color:var(--ink-soft);font-size:12px;line-height:1.6}footer.foot b{color:var(--ink)}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Grundwasser&nbsp;Deutschland</h1>
+      <div class="sub">Farbe = Zustandsklasse, Balkenhöhe = <b>Perzentil</b> (aktueller Stand vs. Stationshistorie).
+        Meterwerte pro Station im Detail. <span id="asof"></span></div>
+    </div>
+  </header>
+
+  <div class="banner" id="banner"></div>
+
+  <div class="grid">
+    <div class="panel mapwrap">
+      <canvas id="map"></canvas>
+      <div class="overlay">
+        <div class="seg" id="layerSeg">
+          <button data-layer="live" class="on">Live-Messwerte (Länder)</button>
+          <button data-layer="gruvo">GRUVO Monatsklasse</button>
+        </div>
+        <div class="seg" id="viewSeg">
+          <button data-view="3d" class="on">3D</button>
+          <button data-view="2d">2D</button>
+        </div>
+      </div>
+      <div class="tip" id="tip"></div>
+      <div class="hint">Ziehen = drehen/neigen · Rad = zoomen</div>
+    </div>
+
+    <div class="panel">
+      <div class="card">
+        <h3>Balkenhöhe kodiert</h3>
+        <select id="heightSel">
+          <option value="pct" selected>Perzentil — Stand vs. Historie (empfohlen)</option>
+          <option value="nhn">Absolut — m ü. NHN (zeigt v. a. Topografie)</option>
+          <option value="flur">Flurabstand — m unter GOK (Tiefe)</option>
+        </select>
+        <div class="muted" id="heightNote" style="margin-top:8px"></div>
+      </div>
+      <div class="card">
+        <h3 id="ribbonTitle">Verteilung nach Klasse</h3>
+        <div class="ribbon" id="ribbon"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="card">
+        <h3>Station</h3>
+        <div id="detail"><div class="detail-empty">Balken antippen für Details (Meterwert, Stand, Quelle).</div></div>
+      </div>
+      <div class="card">
+        <h3>Datenquellen</h3>
+        <div id="sources"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <p><b>Architektur:</b> statische Seite auf GitHub Pages, täglich befüllt von einer GitHub-Action, die je Land
+       einen isolierten Adapter ausführt und alles auf ein gemeinsames Schema normalisiert. Perzentil vs. Referenzzeitraum 1991–2020.</p>
+    <p id="attrib"></p>
+  </footer>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>

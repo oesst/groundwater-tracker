@@ -1,0 +1,4 @@
+{
+  "_note": "Berlin groundwater station master for the Wasserportal adapter. Build/refresh with `node scripts/build-stations-be.js`, which parses the GW overview (anzeige=tabelle_gw) for station numbers, names and coordinates. Empty until built — the adapter then returns [] and keep-last-good keeps the map intact.",
+  "stations": []
+}

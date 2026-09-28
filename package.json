@@ -1,0 +1,16 @@
+{
+  "name": "grundwasser-de",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Nationwide German groundwater monitor — static site (GitHub Pages) fed by a daily GitHub Actions data pipeline.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "fetch": "node fetch/run.js",
+    "seed": "node scripts/seed.js",
+    "build:refstats": "node scripts/build-reference-stats.js",
+    "build:by-stations": "node scripts/build-stations-by.js",
+    "serve": "node scripts/serve.js"
+  },
+  "license": "MIT"
+}

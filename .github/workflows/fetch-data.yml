@@ -1,0 +1,40 @@
+name: Fetch groundwater data
+
+on:
+  schedule:
+    - cron: '0 5 * * *'      # 05:00 UTC daily. cron is UTC and best-effort (may lag).
+  workflow_dispatch: {}       # manual "Run workflow" button
+
+# Prevent overlapping runs.
+concurrency:
+  group: fetch-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write             # allow committing data/ back to the repo
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No runtime dependencies — Node 20 has global fetch. (npm ci only if you add deps.)
+      - name: Run pipeline
+        run: node fetch/run.js
+
+      - name: Commit snapshot
+        run: |
+          git config user.name  "gw-bot"
+          git config user.email "gw-bot@users.noreply.github.com"
+          git add data/latest.json
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: groundwater snapshot $(date -u +%F)"
+            git push
+          fi
