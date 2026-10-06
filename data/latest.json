@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T12:00:49.722Z",
+ "generated_at": "2026-10-06T11:44:43.961Z",
  "schema": 1,
  "sources": [
   {
@@ -12,7 +12,7 @@
    "status": "ok",
    "count": 8,
    "error": null,
-   "fetched_at": "2026-10-05T12:00:49.722Z"
+   "fetched_at": "2026-10-06T11:44:43.960Z"
   },
   {
    "id": "be",
@@ -218,7 +218,7 @@
    "flur": 5.94,
    "pct": 100,
    "cls": "vhigh",
-   "measured_at": "2026-10-04T10:00:00",
+   "measured_at": "2026-10-05T10:00:00",
    "source": "by"
   },
   {
@@ -231,7 +231,7 @@
    "flur": 4.84,
    "pct": 100,
    "cls": "vhigh",
-   "measured_at": "2026-10-05T03:00:00",
+   "measured_at": "2026-10-06T03:00:00",
    "source": "by"
   },
   {
@@ -240,11 +240,11 @@
    "state": "Bayern",
    "lat": 48.267,
    "lon": 12.156,
-   "nhn": 434.43,
-   "flur": 2.4,
+   "nhn": 434.42,
+   "flur": 2.41,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-04T09:00:00",
+   "measured_at": "2026-10-05T09:00:00",
    "source": "by"
   },
   {
@@ -253,11 +253,11 @@
    "state": "Bayern",
    "lat": 48.37,
    "lon": 10.898,
-   "nhn": 490.95,
-   "flur": 11.42,
+   "nhn": 490.85,
+   "flur": 11.52,
    "pct": 100,
    "cls": "vhigh",
-   "measured_at": "2026-09-11T08:42:00",
+   "measured_at": "2026-10-01T06:51:00",
    "source": "by"
   },
   {
@@ -266,11 +266,11 @@
    "state": "Bayern",
    "lat": 49.928,
    "lon": 10.884,
-   "nhn": 240.97,
-   "flur": 5.93,
+   "nhn": 240.98,
+   "flur": 5.92,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-05T06:00:00",
+   "measured_at": "2026-10-06T06:00:00",
    "source": "by"
   },
   {
@@ -283,7 +283,7 @@
    "flur": 5.62,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-04T10:00:00",
+   "measured_at": "2026-10-05T10:00:00",
    "source": "by"
   },
   {
@@ -292,11 +292,11 @@
    "state": "Bayern",
    "lat": 48.112,
    "lon": 11.546,
-   "nhn": 429.08,
-   "flur": 1.81,
+   "nhn": 429.09,
+   "flur": 1.8,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-04T10:00:00",
+   "measured_at": "2026-10-05T10:00:00",
    "source": "by"
   },
   {
