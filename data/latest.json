@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T10:29:12.547Z",
+ "generated_at": "2026-10-20T09:47:34.491Z",
  "schema": 1,
  "sources": [
   {
@@ -12,7 +12,7 @@
    "status": "ok",
    "count": 8,
    "error": null,
-   "fetched_at": "2026-10-19T10:29:12.547Z"
+   "fetched_at": "2026-10-20T09:47:34.491Z"
   },
   {
    "id": "be",
@@ -214,11 +214,11 @@
    "state": "Bayern",
    "lat": 48.171,
    "lon": 11.821,
-   "nhn": 509.92,
-   "flur": 5.99,
+   "nhn": 509.91,
+   "flur": 6,
    "pct": 100,
    "cls": "vhigh",
-   "measured_at": "2026-10-18T10:00:00",
+   "measured_at": "2026-10-19T10:00:00",
    "source": "by"
   },
   {
@@ -227,11 +227,11 @@
    "state": "Bayern",
    "lat": 47.858,
    "lon": 11.48,
-   "nhn": 603.12,
-   "flur": 4.86,
+   "nhn": 603.11,
+   "flur": 4.87,
    "pct": 100,
    "cls": "vhigh",
-   "measured_at": "2026-10-19T03:00:00",
+   "measured_at": "2026-10-20T03:00:00",
    "source": "by"
   },
   {
@@ -244,7 +244,7 @@
    "flur": 2.43,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-18T09:00:00",
+   "measured_at": "2026-10-19T09:00:00",
    "source": "by"
   },
   {
@@ -266,11 +266,11 @@
    "state": "Bayern",
    "lat": 49.928,
    "lon": 10.884,
-   "nhn": 240.98,
-   "flur": 5.92,
+   "nhn": 240.99,
+   "flur": 5.91,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-19T06:00:00",
+   "measured_at": "2026-10-20T06:00:00",
    "source": "by"
   },
   {
@@ -279,11 +279,11 @@
    "state": "Bayern",
    "lat": 49.801,
    "lon": 9.313,
-   "nhn": 325.86,
-   "flur": 5.64,
+   "nhn": 325.85,
+   "flur": 5.65,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-18T10:00:00",
+   "measured_at": "2026-10-19T10:00:00",
    "source": "by"
   },
   {
@@ -296,7 +296,7 @@
    "flur": 1.8,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-18T10:00:00",
+   "measured_at": "2026-10-19T10:00:00",
    "source": "by"
   },
   {
