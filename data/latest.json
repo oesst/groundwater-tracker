@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T09:48:20.332Z",
+ "generated_at": "2026-10-22T09:49:19.883Z",
  "schema": 1,
  "sources": [
   {
@@ -9,7 +9,7 @@
    "cadence": "täglich (Tagesmittel, telemetrisch)",
    "attribution": "Bayerisches Landesamt für Umwelt (LfU), gkd.bayern.de",
    "license": "Nutzungsbedingungen LfU / DL-DE BY 2.0",
-   "status": "ok",
+   "status": "stale",
    "count": 8,
    "error": null,
    "fetched_at": "2026-10-21T09:48:20.332Z"
@@ -219,7 +219,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-20T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-25617",
@@ -232,7 +233,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-21T03:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-14795",
@@ -245,7 +247,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-20T09:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-8182",
@@ -258,7 +261,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-01T06:51:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-5159",
@@ -271,7 +275,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-21T06:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-42665",
@@ -284,7 +289,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-20T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-21139",
@@ -297,7 +303,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-20T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-17195",
@@ -310,7 +317,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-12T09:05:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   }
  ]
 }
