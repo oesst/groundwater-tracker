@@ -1,44 +1,46 @@
 // Berlin — Wasserportal Berlin (SenMVKU). Documented open API, updated daily.
 //   API doc: https://wasserportal.berlin.de/download/wasserportal_berlin_getting_data.pdf
 //
-// Groundwater level ("Grundwasserstand"):
-//   overview of all GW stations:
-//     https://wasserportal.berlin.de/start.php?anzeige=tabelle_gw&messanzeige=ms_gw_berlin
-//   per-station daily-mean CSV:
-//     https://wasserportal.berlin.de/station.php?anzeige=d&station=<ID>&thema=gws&sreihe=tw&smode=c
+// Groundwater level ("Grundwasserstand"), per-station CSV (Einzelwerte):
+//   https://wasserportal.berlin.de/station.php?anzeige=d&station=<ID>&thema=gws
+//        &sreihe=ew&smode=c&exportthema=gw&nstoffid=0&nstoffid2=0
+// CSV: ';'-separated, German decimals, a metadata header block, then rows
+//   "DD.MM.YYYY;<value>". Value is the groundwater level in m ü. NHN (verified
+//   against GOK: e.g. station 100 reads 30,54 vs GOK 31,76). Flurabstand is
+//   derived as GOK - NHN using the GOK carried in data/be.stations.json.
 //
-// This adapter reads a station master (data/be.stations.json: id, name, lat, lon)
-// and fetches each station's latest daily value. Build/refresh the master from the
-// overview with `node scripts/build-stations-be.js` (parses the overview table).
-//
-// NOTE to confirm on first live run: the value column's datum for Berlin GW series
-// (m ü. NHN vs. depth). It is mapped to `nhn` here; flip to `flur` if the portal
-// reports depth for a given station set.
+// Station master: data/be.stations.json (283 daily 'tagesaktuell' wells with
+// WGS84 coords + GOK). Refresh/expand via scripts/build-stations-be.js.
 
 import { readFile } from 'node:fs/promises';
-import { getText, deDate, mapLimit } from '../lib/http.js';
-import { parseCsv, lastNumericRow } from '../lib/csv.js';
+import { getText, deNum, deDate, mapLimit } from '../lib/http.js';
 
 const BASE = 'https://wasserportal.berlin.de';
+const RE_ROW = /^(\d{2}\.\d{2}\.\d{4});\s*(-?\d+(?:,\d+)?)\s*$/;
 
 async function loadStations() {
   try {
     const url = new URL('../data/be.stations.json', import.meta.url);
     const j = JSON.parse(await readFile(url, 'utf8'));
-    // only stations that have coordinates can be mapped
     return (j.stations || []).filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lon));
   } catch { return []; }
 }
 
 async function fetchLatest(st) {
-  const url = `${BASE}/station.php?anzeige=d&station=${encodeURIComponent(st.id)}&thema=gws&sreihe=tw&smode=c`;
+  const url = `${BASE}/station.php?anzeige=d&station=${encodeURIComponent(st.id)}`
+            + `&thema=gws&sreihe=ew&smode=c&exportthema=gw&nstoffid=0&nstoffid2=0`;
   const csv = await getText(url, { timeout: 20000, retries: 2 });
-  const rows = parseCsv(csv);
-  const last = lastNumericRow(rows, { dateCol: 0, valueCol: 1 });
-  if (!last) throw new Error(`no value for BE station ${st.id}`);
+  let last = null;
+  for (const line of csv.split(/\r?\n/)) {
+    const m = line.trim().match(RE_ROW);
+    if (m) last = { date: m[1], value: deNum(m[2]) };   // keep scanning -> last = newest
+  }
+  if (!last || last.value == null) throw new Error(`no value for BE station ${st.id}`);
+  const nhn = last.value;
+  const flur = Number.isFinite(st.gok) ? +(st.gok - nhn).toFixed(2) : null;
   return {
     id: `be-${st.id}`, name: st.name || `Messstelle ${st.id}`, state: 'Berlin',
-    lat: st.lat, lon: st.lon, nhn: last.value, flur: null, measured_at: deDate(last.date),
+    lat: st.lat, lon: st.lon, nhn, flur, measured_at: deDate(last.date),
   };
 }
 
@@ -51,8 +53,8 @@ export default {
   license: 'DL-DE BY 2.0',
   async fetch() {
     const stations = await loadStations();
-    if (!stations.length) return []; // master not built yet -> keep-last-good handles it
-    const out = await mapLimit(stations, 6, (st) => fetchLatest(st));
+    if (!stations.length) return [];
+    const out = await mapLimit(stations, 8, (st) => fetchLatest(st));
     return out.filter((r) => r && !r.__error && r.nhn != null);
   },
 };

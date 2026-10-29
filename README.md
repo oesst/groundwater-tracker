@@ -44,7 +44,7 @@ blank. Regenerate the seed anytime with `npm run seed`.
 | Adapter | State | Status | Real source |
 |---|---|---|---|
 | `by` | Bayern | **live** | GKD / LfU per-well `…/messwerte` (m ü. NHN, Flurabstand), daily |
-| `be` | Berlin | **live** (needs master) | Wasserportal Berlin CSV API (`thema=gws`), daily |
+| `be` | Berlin | **live** | Wasserportal Berlin CSV API (`thema=gws`), 283 daily wells |
 | `bw` | Baden-Württemberg | scaffold | LUBW / UDO map viewer (no clean values API) |
 | `nw` | Nordrhein-Westfalen | scaffold | ELWAS-WEB / LANUV |
 | `ni` | Niedersachsen | scaffold | NLWKN |
@@ -59,8 +59,9 @@ when the Action runs — see `lib/geoservices.js` for WFS/ArcGIS helpers and `li
 
 - **Bavaria** is wired end-to-end; `data/by.stations.json` seeds 8 confirmed wells (town-level coords —
   refine/expand via `npm run build:by-stations`).
-- **Berlin** adapter is real, but needs its station master built once (`node scripts/build-stations-be.js`,
-  then add coordinates). Until then it returns `[]` and keep-last-good leaves the map intact.
+- **Berlin** is wired end-to-end; `data/be.stations.json` holds 283 daily 'tagesaktuell' wells with
+  WGS84 coordinates and GOK (value is m ü. NHN; Flurabstand = GOK − NHN). Refresh/expand via
+  `node scripts/build-stations-be.js` (set `INCLUDE_ALL=1` for all ~894 GW-Stand wells).
 - The rest return `[]` until wired — per-source status shows them as "not yet wired", never breaking the build.
 
 > First real run also validates Bavaria's HTML parse. If GKD changed its markup, only the three
