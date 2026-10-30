@@ -46,13 +46,12 @@ blank. Regenerate the seed anytime with `npm run seed`.
 | `by` | Bayern | **live** | GKD / LfU per-well `…/messwerte` (m ü. NHN, Flurabstand), daily |
 | `be` | Berlin | **live** | Wasserportal Berlin CSV API (`thema=gws`), 283 daily wells |
 | `bw` | Baden-Württemberg | **live** | LUBW GuQ JSON API (lupo-cloud.de), 56 wells, monthly |
-| `nw` | Nordrhein-Westfalen | scaffold | ELWAS-WEB / LANUV |
+| `nw` | Nordrhein-Westfalen | **live** | ELWAS-WEB JSF flow (scoped to 201 daily wells) |
 | `ni` | Niedersachsen | scaffold | NLWKN |
 | `pending.js` | 11 remaining states | scaffold | see file header (agency per state) |
 | `gruvo` | (model layer) | scaffold | BGR serves tiles, not a public feature query |
 
-**Reality of "all states":** German groundwater is federal — 16 separate portals. **Bavaria**,
-**Berlin** and **Baden-Württemberg** are wired against real machine-readable endpoints; the rest still need per-service work.
+**Reality of "all states":** German groundwater is federal — 16 separate portals. **Bavaria**, **Berlin**, **Baden-Württemberg** and **NRW** are wired; the rest still need per-service work.
 Most other states expose current values only via interactive map viewers (UDO/WMS) or monthly PDFs, so
 each remaining adapter is a bespoke job that must be validated against the live service (which happens
 when the Action runs — see `lib/geoservices.js` for WFS/ArcGIS helpers and `lib/csv.js` for CSV ones).
@@ -65,6 +64,11 @@ when the Action runs — see `lib/geoservices.js` for WFS/ArcGIS helpers and `li
 - **Baden-Württemberg** uses LUBW's GuQ JSON API (`lupo-cloud.de/guq-app`): 56 groundwater wells,
   current monthly mean (m ü. NHN), coloured by LUBW's own official 3-class status (niedrig/mittel/hoch);
   bar height = position in each well's 1996–present range. Springs (Quellschüttung) are excluded.
+- **Nordrhein-Westfalen** has no public API: ELWAS-WEB is driven by replaying its public JSF
+  (Jakarta Faces) form flow per station (4 POSTs, own cookie session), scoped to 201 daily, publicly-
+  released wells (station master from OpenHygrisC, DL-DE Zero). Current level (m ü. NHN) + Flurabstand,
+  percentile vs each well's 1991–2020 history. This is the most fragile adapter — a NRW site change can
+  break the form flow; keep-last-good then holds the previous snapshot. Rebuild master: scripts/build-stations-nw.js.
 - The rest return `[]` until wired — per-source status shows them as "not yet wired", never breaking the build.
 
 > First real run also validates Bavaria's HTML parse. If GKD changed its markup, only the three
