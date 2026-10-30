@@ -2,7 +2,7 @@ name: Fetch groundwater data
 
 on:
   schedule:
-    - cron: '0 5 * * *'      # 05:00 UTC daily. cron is UTC and best-effort (may lag).
+    - cron: '23 4 * * 1,4'   # Mon & Thu 04:23 UTC (~twice weekly). UTC, best-effort (may lag).
   workflow_dispatch: {}       # manual "Run workflow" button
 
 # Prevent overlapping runs.
