@@ -55,9 +55,24 @@ function banner(){
       'Bayern-Stationen sind echt, Werte hier noch synthetisch; „Demo“-Punkte verschwinden beim ersten Lauf.';}
 }
 function attribution(){
-  const lic=[...new Set((DATA.sources||[]).filter(s=>s.count>0).map(s=>s.attribution).filter(Boolean))];
-  document.getElementById('attrib').innerHTML='<b>Datenquellen:</b> '+(lic.length?lic.map(esc).join(' · '):'—')+
-    '. Lizenzen je Landesdienst (überw. DL-DE BY 2.0). GRUVO © BGR.';
+  // Per-source credit with licence — DL-DE BY 2.0 requires naming the source,
+  // the licence, and that the data was modified. Lists only sources with data.
+  const DLDE = 'https://www.govdata.de/dl-de/by-2-0';
+  const active = (DATA.sources||[]).filter(s => s.count > 0);
+  const items = active.map(s => {
+    const lic = s.license || '';
+    const licHtml = /DL-DE/i.test(lic)
+      ? `<a href="${DLDE}" target="_blank" rel="noopener">${esc(lic)}</a>` : esc(lic);
+    return `<li>${esc(s.attribution || s.name)}${lic ? ' — ' + licHtml : ''}</li>`;
+  }).join('');
+  document.getElementById('attrib').innerHTML =
+    '<b>Datenquellen &amp; Lizenzen</b>'
+    + (items ? `<ul class="src-credits">${items}</ul>` : ' —')
+    + '<p class="src-note">Die Grundwasserstände stammen von den genannten Stellen und wurden für diese '
+    + 'Darstellung bearbeitet (Klassifizierung bzw. Perzentil-Berechnung, einheitliche Aufbereitung). '
+    + 'Es besteht keine Gewähr, dass die bearbeiteten Daten mit den amtlichen Originaldaten übereinstimmen. '
+    + 'GRUVO © BGR. Kartengrundlage © <a href="https://openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende, '
+    + '© <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>.</p>';
 }
 
 /* ---------- layers ---------- */
