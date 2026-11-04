@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T08:20:56.547Z",
+ "generated_at": "2026-11-04T08:46:06.891Z",
  "schema": 1,
  "sources": [
   {
@@ -9,7 +9,7 @@
    "cadence": "täglich (Tagesmittel, telemetrisch)",
    "attribution": "Bayerisches Landesamt für Umwelt (LfU), gkd.bayern.de",
    "license": "Nutzungsbedingungen LfU / DL-DE BY 2.0",
-   "status": "ok",
+   "status": "stale",
    "count": 8,
    "error": null,
    "fetched_at": "2026-11-04T08:20:56.546Z"
@@ -24,7 +24,7 @@
    "status": "ok",
    "count": 283,
    "error": null,
-   "fetched_at": "2026-11-04T08:20:56.547Z"
+   "fetched_at": "2026-11-04T08:46:06.890Z"
   },
   {
    "id": "bw",
@@ -36,7 +36,7 @@
    "status": "ok",
    "count": 57,
    "error": null,
-   "fetched_at": "2026-11-04T08:20:56.547Z"
+   "fetched_at": "2026-11-04T08:46:06.890Z"
   },
   {
    "id": "nw",
@@ -47,7 +47,7 @@
    "license": "DL-DE BY 2.0",
    "status": "down",
    "count": 0,
-   "error": "all 201 NRW stations failed — most common: \"detail form missing\" (197×)",
+   "error": "all 201 NRW stations failed — most common: \"detail form missing [len=55729 switcher=false detailId=false partial=false forms=2]\" (89×)",
    "fetched_at": null
   },
   {
@@ -219,7 +219,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-21T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-25617",
@@ -232,7 +233,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-21T03:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-14795",
@@ -245,7 +247,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-21T09:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-8182",
@@ -258,7 +261,8 @@
    "pct": 100,
    "cls": "vhigh",
    "measured_at": "2026-10-01T06:51:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-5159",
@@ -271,7 +275,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-21T06:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-42665",
@@ -284,7 +289,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-21T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-21139",
@@ -297,7 +303,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-21T10:00:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "by-17195",
@@ -310,7 +317,8 @@
    "pct": 0,
    "cls": "vlow",
    "measured_at": "2026-10-12T09:05:00",
-   "source": "by"
+   "source": "by",
+   "stale": true
   },
   {
    "id": "be-100",
