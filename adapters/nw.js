@@ -140,9 +140,15 @@ async function fetchStation(st) {
   const stCtl = rForm.controls.find((c) => c[1] === st.id);
   r = await postForm(jar, r.url, rForm.action, [...rForm.fields, [stCtl[0], stCtl[1]]]);
 
-  forms = parseForms(r.text);
+  // PrimeFaces may answer a row-select as a partial-response XML; unwrap it.
+  const html3 = r.text.includes('partial-response') ? extractUpdates(r.text) : r.text;
+  forms = parseForms(html3);
   const dForm = endsWith(forms, ':dDSwitcher');
-  if (!dForm) throw new Error('detail form missing');
+  if (!dForm) {
+    const partial = r.text.slice(0, 160).includes('partial-response');
+    throw new Error(`detail form missing [len=${r.text.length} switcher=${/dDSwitcher/.test(html3)}`
+      + ` detailId=${/detail_form_id/.test(html3)} partial=${partial} forms=${forms.length}]`);
+  }
   const switchName = dForm.fields.find(([n]) => n.endsWith(':dDSwitcher'))[0];
   const formIdField = dForm.fields.find(([n, v]) => n === v && n.endsWith(':detail_form_id'));
   const vsName = (dForm.fields.find(([n]) => n.endsWith('.faces.ViewState')) || [])[0];
@@ -194,7 +200,7 @@ export default {
     if (!good.length) {
       const errs = out.filter((r) => r && r.__error).map((r) => r.__error);
       const tally = {};
-      for (const e of errs) { const k = String(e).slice(0, 60); tally[k] = (tally[k] || 0) + 1; }
+      for (const e of errs) { const k = String(e).slice(0, 160); tally[k] = (tally[k] || 0) + 1; }
       const top = Object.entries(tally).sort((a, b) => b[1] - a[1])[0];
       throw new Error(`all ${stations.length} NRW stations failed`
         + (top ? ` — most common: "${top[0]}" (${top[1]}×)` : ''));
