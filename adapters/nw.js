@@ -22,6 +22,7 @@ import { quantiles11, percentileFromQuantiles } from '../lib/percentile.js';
 const BASE = 'https://www.elwasweb.nrw.de/elwas-web/data/gw/zustand/gwm/'
            + 'grundwasserMst.xhtml?marea=1&mtheme=0&lindex=0&nested=true';
 // A browser UA: ELWAS/PrimeFaces serves a reduced/inconsistent page to non-browser clients.
+let _nwDumped = false;  // one-shot step-3 debug dump
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36';
 
 async function loadStations() {
@@ -145,6 +146,10 @@ async function fetchStation(st) {
   forms = parseForms(html3);
   const dForm = endsWith(forms, ':dDSwitcher');
   if (!dForm) {
+    if (!_nwDumped) {
+      _nwDumped = true;
+      console.log('NW_DEBUG_STEP3_BEGIN\n' + html3.slice(0, 60000) + '\nNW_DEBUG_STEP3_END');
+    }
     const partial = r.text.slice(0, 160).includes('partial-response');
     throw new Error(`detail form missing [len=${r.text.length} switcher=${/dDSwitcher/.test(html3)}`
       + ` detailId=${/detail_form_id/.test(html3)} partial=${partial} forms=${forms.length}]`);
