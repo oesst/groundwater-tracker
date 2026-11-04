@@ -1,3 +1,4 @@
-node_modules/
-reference-src/
+nii+
+ode_modules/
 .DS_Store
+data/*
