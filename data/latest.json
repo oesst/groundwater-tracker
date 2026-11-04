@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T08:46:06.891Z",
+ "generated_at": "2026-11-04T08:56:44.491Z",
  "schema": 1,
  "sources": [
   {
@@ -24,7 +24,7 @@
    "status": "ok",
    "count": 283,
    "error": null,
-   "fetched_at": "2026-11-04T08:46:06.890Z"
+   "fetched_at": "2026-11-04T08:56:44.491Z"
   },
   {
    "id": "bw",
@@ -36,7 +36,7 @@
    "status": "ok",
    "count": 57,
    "error": null,
-   "fetched_at": "2026-11-04T08:46:06.890Z"
+   "fetched_at": "2026-11-04T08:56:44.491Z"
   },
   {
    "id": "nw",
@@ -47,7 +47,7 @@
    "license": "DL-DE BY 2.0",
    "status": "down",
    "count": 0,
-   "error": "all 201 NRW stations failed — most common: \"detail form missing [len=55729 switcher=false detailId=false partial=false forms=2]\" (89×)",
+   "error": "all 201 NRW stations failed — most common: \"detail form missing [len=55729 switcher=false detailId=false partial=false forms=2]\" (73×)",
    "fetched_at": null
   },
   {
