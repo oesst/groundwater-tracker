@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-02T12:37:41.636Z",
+ "generated_at": "2026-11-04T08:20:56.547Z",
  "schema": 1,
  "sources": [
   {
@@ -12,7 +12,7 @@
    "status": "ok",
    "count": 8,
    "error": null,
-   "fetched_at": "2026-11-02T12:37:41.636Z"
+   "fetched_at": "2026-11-04T08:20:56.546Z"
   },
   {
    "id": "be",
@@ -24,7 +24,7 @@
    "status": "ok",
    "count": 283,
    "error": null,
-   "fetched_at": "2026-11-02T12:37:41.636Z"
+   "fetched_at": "2026-11-04T08:20:56.547Z"
   },
   {
    "id": "bw",
@@ -36,7 +36,7 @@
    "status": "ok",
    "count": 57,
    "error": null,
-   "fetched_at": "2026-11-02T12:37:41.636Z"
+   "fetched_at": "2026-11-04T08:20:56.547Z"
   },
   {
    "id": "nw",
@@ -47,7 +47,7 @@
    "license": "DL-DE BY 2.0",
    "status": "down",
    "count": 0,
-   "error": null,
+   "error": "all 201 NRW stations failed — most common: \"detail form missing\" (197×)",
    "fetched_at": null
   },
   {
@@ -322,7 +322,7 @@
    "flur": 1.24,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -335,7 +335,7 @@
    "flur": 2.12,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -346,9 +346,9 @@
    "lon": 13.56002,
    "nhn": 33.03,
    "flur": 1.88,
-   "pct": 13.5,
+   "pct": 13.8,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -359,9 +359,9 @@
    "lon": 13.52437,
    "nhn": 31.71,
    "flur": 3.77,
-   "pct": 1.4,
+   "pct": 1.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -374,7 +374,7 @@
    "flur": 3.77,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -387,7 +387,7 @@
    "flur": 5.49,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -396,11 +396,11 @@
    "state": "Berlin",
    "lat": 52.54377,
    "lon": 13.2731,
-   "nhn": 29.5,
-   "flur": 2.54,
+   "nhn": 29.49,
+   "flur": 2.55,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -411,9 +411,9 @@
    "lon": 13.26208,
    "nhn": 28.86,
    "flur": 3.48,
-   "pct": 2,
+   "pct": 2.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -422,11 +422,11 @@
    "state": "Berlin",
    "lat": 52.5325,
    "lon": 13.24705,
-   "nhn": 29.15,
-   "flur": 2.75,
-   "pct": 7.8,
+   "nhn": 29.16,
+   "flur": 2.74,
+   "pct": 8.9,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -439,7 +439,7 @@
    "flur": 4.63,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -452,7 +452,7 @@
    "flur": 1.52,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -461,11 +461,11 @@
    "state": "Berlin",
    "lat": 52.52943,
    "lon": 13.25733,
-   "nhn": 29.22,
-   "flur": 1.64,
-   "pct": 20,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 29.23,
+   "flur": 1.63,
+   "pct": 30,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -478,7 +478,7 @@
    "flur": 4.03,
    "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -491,7 +491,7 @@
    "flur": 4.6,
    "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -504,7 +504,7 @@
    "flur": 3.17,
    "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -513,11 +513,11 @@
    "state": "Berlin",
    "lat": 52.65655,
    "lon": 13.30506,
-   "nhn": 36.33,
-   "flur": 8.83,
-   "pct": 10,
+   "nhn": 36.34,
+   "flur": 8.82,
+   "pct": 11.1,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -526,11 +526,11 @@
    "state": "Berlin",
    "lat": 52.54071,
    "lon": 13.49284,
-   "nhn": 39.21,
-   "flur": 19.08,
-   "pct": 11.7,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 39.07,
+   "flur": 19.22,
+   "pct": 5.2,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -539,11 +539,11 @@
    "state": "Berlin",
    "lat": 52.48009,
    "lon": 13.51527,
-   "nhn": 31.74,
-   "flur": 2.52,
-   "pct": 10,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 31.73,
+   "flur": 2.53,
+   "pct": 8,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -554,9 +554,9 @@
    "lon": 13.5178,
    "nhn": 31.59,
    "flur": 0.66,
-   "pct": 5,
+   "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -565,11 +565,11 @@
    "state": "Berlin",
    "lat": 52.41109,
    "lon": 13.58354,
-   "nhn": 32.7,
-   "flur": 1.49,
-   "pct": 18,
+   "nhn": 32.71,
+   "flur": 1.48,
+   "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -580,9 +580,9 @@
    "lon": 13.58354,
    "nhn": 32.91,
    "flur": 1.39,
-   "pct": 11.4,
+   "pct": 11.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -591,11 +591,11 @@
    "state": "Berlin",
    "lat": 52.37325,
    "lon": 13.65895,
-   "nhn": 32.03,
-   "flur": 3.9,
-   "pct": 50,
+   "nhn": 32.02,
+   "flur": 3.91,
+   "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -604,11 +604,11 @@
    "state": "Berlin",
    "lat": 52.37323,
    "lon": 13.65894,
-   "nhn": 32.31,
-   "flur": 3.69,
-   "pct": 20,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 32.32,
+   "flur": 3.68,
+   "pct": 25,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -617,11 +617,11 @@
    "state": "Berlin",
    "lat": 52.34336,
    "lon": 13.64801,
-   "nhn": 32.24,
-   "flur": 3.87,
-   "pct": 20,
+   "nhn": 32.25,
+   "flur": 3.86,
+   "pct": 23.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -634,7 +634,7 @@
    "flur": 3.81,
    "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -643,11 +643,11 @@
    "state": "Berlin",
    "lat": 52.64513,
    "lon": 13.46868,
-   "nhn": 51.17,
-   "flur": 1.24,
-   "pct": 17.5,
+   "nhn": 51.16,
+   "flur": 1.25,
+   "pct": 15,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -656,11 +656,11 @@
    "state": "Berlin",
    "lat": 52.63839,
    "lon": 13.45688,
-   "nhn": 50.42,
-   "flur": 2.17,
-   "pct": 25,
+   "nhn": 50.43,
+   "flur": 2.16,
+   "pct": 26,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -669,11 +669,11 @@
    "state": "Berlin",
    "lat": 52.59117,
    "lon": 13.36948,
-   "nhn": 41.25,
-   "flur": 4.74,
-   "pct": 12.4,
+   "nhn": 41.24,
+   "flur": 4.75,
+   "pct": 11.4,
    "cls": "low",
-   "measured_at": "2026-10-28T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -682,11 +682,11 @@
    "state": "Berlin",
    "lat": 52.59116,
    "lon": 13.36946,
-   "nhn": 40.83,
-   "flur": 5.14,
-   "pct": 13.3,
+   "nhn": 40.86,
+   "flur": 5.11,
+   "pct": 23.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -699,7 +699,7 @@
    "flur": 4.71,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -712,7 +712,7 @@
    "flur": 1.83,
    "pct": 0.9,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -723,9 +723,9 @@
    "lon": 13.13894,
    "nhn": 29.56,
    "flur": 1.9,
-   "pct": 8.5,
+   "pct": 8.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -734,11 +734,11 @@
    "state": "Berlin",
    "lat": 52.4039,
    "lon": 13.73049,
-   "nhn": 32.41,
-   "flur": 0.68,
-   "pct": 45,
+   "nhn": 32.4,
+   "flur": 0.69,
+   "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -747,11 +747,11 @@
    "state": "Berlin",
    "lat": 52.42378,
    "lon": 13.69432,
-   "nhn": 32.06,
-   "flur": 2.12,
-   "pct": 21.7,
+   "nhn": 32.07,
+   "flur": 2.11,
+   "pct": 23.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -764,7 +764,7 @@
    "flur": 3,
    "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -773,11 +773,11 @@
    "state": "Berlin",
    "lat": 52.48938,
    "lon": 13.56778,
-   "nhn": 33.11,
-   "flur": 3.97,
-   "pct": 5,
+   "nhn": 33.12,
+   "flur": 3.96,
+   "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -790,7 +790,7 @@
    "flur": 2.82,
    "pct": 4,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -803,7 +803,7 @@
    "flur": 2.97,
    "pct": 1,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -816,7 +816,7 @@
    "flur": 1.69,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -829,7 +829,7 @@
    "flur": 1.64,
    "pct": 2.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -838,11 +838,11 @@
    "state": "Berlin",
    "lat": 52.4778,
    "lon": 13.26236,
-   "nhn": 30.22,
-   "flur": 9.76,
+   "nhn": 30.21,
+   "flur": 9.77,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -851,11 +851,11 @@
    "state": "Berlin",
    "lat": 52.4627,
    "lon": 13.25455,
-   "nhn": 30.35,
-   "flur": 4.62,
-   "pct": 1.1,
+   "nhn": 30.37,
+   "flur": 4.6,
+   "pct": 3.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -864,11 +864,11 @@
    "state": "Berlin",
    "lat": 52.46224,
    "lon": 13.25252,
-   "nhn": 29.88,
-   "flur": 3.97,
-   "pct": 0.9,
-   "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 29.98,
+   "flur": 3.87,
+   "pct": 10,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -877,11 +877,11 @@
    "state": "Berlin",
    "lat": 52.56885,
    "lon": 13.44169,
-   "nhn": 44.47,
-   "flur": 7.64,
-   "pct": 3.3,
+   "nhn": 44.46,
+   "flur": 7.65,
+   "pct": 2.4,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -890,11 +890,11 @@
    "state": "Berlin",
    "lat": 52.40012,
    "lon": 13.48798,
-   "nhn": 36.15,
-   "flur": 11.44,
+   "nhn": 36.14,
+   "flur": 11.45,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -905,9 +905,9 @@
    "lon": 13.2755,
    "nhn": 29.53,
    "flur": 2.98,
-   "pct": 1.9,
+   "pct": 2,
    "cls": "vlow",
-   "measured_at": "2026-10-29T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -918,9 +918,9 @@
    "lon": 13.27751,
    "nhn": 29.51,
    "flur": 2.49,
-   "pct": 1.8,
+   "pct": 2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -931,9 +931,9 @@
    "lon": 13.27152,
    "nhn": 29.21,
    "flur": 2.34,
-   "pct": 3.8,
+   "pct": 4.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -946,7 +946,7 @@
    "flur": 2.37,
    "pct": 1,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -959,7 +959,7 @@
    "flur": 8,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -972,7 +972,7 @@
    "flur": 7.94,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -981,11 +981,11 @@
    "state": "Berlin",
    "lat": 52.58703,
    "lon": 13.53657,
-   "nhn": 50.82,
-   "flur": 8.26,
+   "nhn": 50.8,
+   "flur": 8.28,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-29T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -998,7 +998,7 @@
    "flur": 7.25,
    "pct": 9.4,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1011,7 +1011,7 @@
    "flur": 5.98,
    "pct": 0.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1024,7 +1024,7 @@
    "flur": 18.33,
    "pct": 3.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1033,11 +1033,11 @@
    "state": "Berlin",
    "lat": 52.47789,
    "lon": 13.26449,
-   "nhn": 31.63,
-   "flur": 0.12,
-   "pct": 42.9,
+   "nhn": 31.62,
+   "flur": 0.13,
+   "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1050,7 +1050,7 @@
    "flur": 0.69,
    "pct": 18,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1059,11 +1059,11 @@
    "state": "Berlin",
    "lat": 52.49716,
    "lon": 13.22767,
-   "nhn": 28.99,
-   "flur": 0.22,
-   "pct": 36.7,
+   "nhn": 28.98,
+   "flur": 0.23,
+   "pct": 33.3,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1072,11 +1072,11 @@
    "state": "Berlin",
    "lat": 52.42128,
    "lon": 13.71174,
-   "nhn": 32.19,
-   "flur": 0.26,
-   "pct": 13.7,
+   "nhn": 32.18,
+   "flur": 0.27,
+   "pct": 12.9,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1089,7 +1089,7 @@
    "flur": 0.36,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1102,7 +1102,7 @@
    "flur": 0.37,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1111,11 +1111,11 @@
    "state": "Berlin",
    "lat": 52.41974,
    "lon": 13.63317,
-   "nhn": 31.8,
-   "flur": 0.32,
+   "nhn": 31.79,
+   "flur": 0.33,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1126,7 +1126,7 @@
    "lon": 13.17366,
    "nhn": 30.63,
    "flur": 0.3,
-   "pct": 5.5,
+   "pct": 5.6,
    "cls": "vlow",
    "measured_at": "2026-10-23T00:00:00",
    "source": "be"
@@ -1141,7 +1141,7 @@
    "flur": 0.52,
    "pct": 10.6,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1154,7 +1154,7 @@
    "flur": -0.24,
    "pct": 7.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1163,11 +1163,11 @@
    "state": "Berlin",
    "lat": 52.57591,
    "lon": 13.20562,
-   "nhn": 30.5,
-   "flur": 0.5,
-   "pct": 10.9,
+   "nhn": 30.49,
+   "flur": 0.51,
+   "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1176,11 +1176,11 @@
    "state": "Berlin",
    "lat": 52.58066,
    "lon": 13.36356,
-   "nhn": 41.35,
-   "flur": 1.98,
-   "pct": 4.6,
+   "nhn": 41.34,
+   "flur": 1.99,
+   "pct": 4.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1189,11 +1189,11 @@
    "state": "Berlin",
    "lat": 52.58639,
    "lon": 13.2865,
-   "nhn": 30.38,
-   "flur": 4.96,
+   "nhn": 30.37,
+   "flur": 4.97,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1206,7 +1206,7 @@
    "flur": 5.49,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1219,7 +1219,7 @@
    "flur": 2.93,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1232,7 +1232,7 @@
    "flur": 2.58,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1245,7 +1245,7 @@
    "flur": 3.11,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1258,7 +1258,7 @@
    "flur": 4.47,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1271,7 +1271,7 @@
    "flur": 3.2,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1284,7 +1284,7 @@
    "flur": 3.66,
    "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1293,11 +1293,11 @@
    "state": "Berlin",
    "lat": 52.44748,
    "lon": 13.34087,
-   "nhn": 33.68,
-   "flur": 6.16,
-   "pct": 1.4,
+   "nhn": 33.67,
+   "flur": 6.17,
+   "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1306,11 +1306,11 @@
    "state": "Berlin",
    "lat": 52.53924,
    "lon": 13.3444,
-   "nhn": 30.78,
-   "flur": 6.4,
-   "pct": 8.6,
+   "nhn": 30.77,
+   "flur": 6.41,
+   "pct": 7.1,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1319,11 +1319,11 @@
    "state": "Berlin",
    "lat": 52.57049,
    "lon": 13.39775,
-   "nhn": 38.79,
-   "flur": 0.96,
-   "pct": 10,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 38.77,
+   "flur": 0.98,
+   "pct": 3.3,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1332,11 +1332,11 @@
    "state": "Berlin",
    "lat": 52.63389,
    "lon": 13.46156,
-   "nhn": 50.55,
-   "flur": 1.3,
-   "pct": 32.5,
+   "nhn": 50.57,
+   "flur": 1.28,
+   "pct": 37.5,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1347,9 +1347,9 @@
    "lon": 13.46156,
    "nhn": 50.37,
    "flur": 1.46,
-   "pct": 13.3,
+   "pct": 13.4,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1362,7 +1362,7 @@
    "flur": 2.86,
    "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1375,7 +1375,7 @@
    "flur": 2.57,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1384,11 +1384,11 @@
    "state": "Berlin",
    "lat": 52.46059,
    "lon": 13.11644,
-   "nhn": 29.28,
-   "flur": 11.66,
-   "pct": 11.3,
+   "nhn": 29.29,
+   "flur": 11.65,
+   "pct": 12.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1401,7 +1401,7 @@
    "flur": 3.01,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1412,9 +1412,9 @@
    "lon": 13.48508,
    "nhn": 32.57,
    "flur": 3.37,
-   "pct": 9,
+   "pct": 9.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1427,7 +1427,7 @@
    "flur": 3.76,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1440,7 +1440,7 @@
    "flur": 3.03,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1453,7 +1453,7 @@
    "flur": 10.85,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1466,7 +1466,7 @@
    "flur": 7.63,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -1479,7 +1479,7 @@
    "flur": 1.65,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1492,7 +1492,7 @@
    "flur": 2.04,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1505,7 +1505,7 @@
    "flur": 3.81,
    "pct": 0.8,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1514,11 +1514,11 @@
    "state": "Berlin",
    "lat": 52.61236,
    "lon": 13.23171,
-   "nhn": 30.96,
-   "flur": 2.51,
-   "pct": 11.4,
+   "nhn": 30.97,
+   "flur": 2.5,
+   "pct": 12.1,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1527,11 +1527,11 @@
    "state": "Berlin",
    "lat": 52.625,
    "lon": 13.22628,
-   "nhn": 30.61,
-   "flur": 3.49,
-   "pct": 8,
-   "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 30.62,
+   "flur": 3.48,
+   "pct": 10,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1544,7 +1544,7 @@
    "flur": 2.69,
    "pct": 1,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1553,11 +1553,11 @@
    "state": "Berlin",
    "lat": 52.47688,
    "lon": 13.13726,
-   "nhn": 28.8,
-   "flur": 16.43,
+   "nhn": 28.79,
+   "flur": 16.44,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1566,11 +1566,11 @@
    "state": "Berlin",
    "lat": 52.46275,
    "lon": 13.15321,
-   "nhn": 27.63,
-   "flur": 22.05,
-   "pct": 15,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 27.66,
+   "flur": 22.02,
+   "pct": 25,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1583,7 +1583,7 @@
    "flur": 4.93,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1592,11 +1592,11 @@
    "state": "Berlin",
    "lat": 52.45242,
    "lon": 13.11784,
-   "nhn": 29.2,
-   "flur": 14.8,
-   "pct": 15,
+   "nhn": 29.21,
+   "flur": 14.79,
+   "pct": 17.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1609,7 +1609,7 @@
    "flur": 21.91,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1622,7 +1622,7 @@
    "flur": 4.82,
    "pct": 13.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1631,11 +1631,11 @@
    "state": "Berlin",
    "lat": 52.52151,
    "lon": 13.21378,
-   "nhn": 28.95,
-   "flur": 1.62,
-   "pct": 15,
+   "nhn": 28.94,
+   "flur": 1.63,
+   "pct": 13.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1648,7 +1648,7 @@
    "flur": 3.48,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1661,7 +1661,7 @@
    "flur": 2.49,
    "pct": 8,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1670,11 +1670,11 @@
    "state": "Berlin",
    "lat": 52.52331,
    "lon": 13.17057,
-   "nhn": 28.51,
-   "flur": 4.23,
-   "pct": 2.5,
+   "nhn": 28.5,
+   "flur": 4.24,
+   "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1687,7 +1687,7 @@
    "flur": 4.18,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1696,11 +1696,11 @@
    "state": "Berlin",
    "lat": 52.45402,
    "lon": 13.15174,
-   "nhn": 27.69,
-   "flur": 8.13,
-   "pct": 40,
-   "cls": "normal",
-   "measured_at": "2026-10-28T00:00:00",
+   "nhn": 27.74,
+   "flur": 8.08,
+   "pct": 76.7,
+   "cls": "high",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1709,11 +1709,11 @@
    "state": "Berlin",
    "lat": 52.56962,
    "lon": 13.19339,
-   "nhn": 29.48,
-   "flur": 4.41,
-   "pct": 3.5,
+   "nhn": 29.5,
+   "flur": 4.39,
+   "pct": 4.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1722,11 +1722,11 @@
    "state": "Berlin",
    "lat": 52.48644,
    "lon": 13.18068,
-   "nhn": 27.16,
-   "flur": 13.74,
-   "pct": 47.7,
+   "nhn": 27.1,
+   "flur": 13.8,
+   "pct": 35,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1735,11 +1735,11 @@
    "state": "Berlin",
    "lat": 52.45799,
    "lon": 13.15568,
-   "nhn": 27.11,
-   "flur": 16.31,
-   "pct": 20,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 27.12,
+   "flur": 16.3,
+   "pct": 30,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1748,11 +1748,11 @@
    "state": "Berlin",
    "lat": 52.45763,
    "lon": 13.15558,
-   "nhn": 27.1,
-   "flur": 15.62,
-   "pct": 35,
+   "nhn": 27.11,
+   "flur": 15.61,
+   "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -1763,9 +1763,9 @@
    "lon": 13.58184,
    "nhn": 47.47,
    "flur": 7.51,
-   "pct": 1.4,
+   "pct": 1.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1776,9 +1776,9 @@
    "lon": 13.58439,
    "nhn": 49.32,
    "flur": 2.81,
-   "pct": 2.2,
+   "pct": 2.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1787,11 +1787,11 @@
    "state": "Berlin",
    "lat": 52.63613,
    "lon": 13.51943,
-   "nhn": 57,
-   "flur": 14.33,
-   "pct": 2.9,
+   "nhn": 57.01,
+   "flur": 14.32,
+   "pct": 4.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1804,7 +1804,7 @@
    "flur": 10.94,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1817,7 +1817,7 @@
    "flur": 13.92,
    "pct": 2.9,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1830,7 +1830,7 @@
    "flur": 10.31,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1839,11 +1839,11 @@
    "state": "Berlin",
    "lat": 52.53185,
    "lon": 13.576,
-   "nhn": 42.19,
-   "flur": 7.71,
-   "pct": 11.4,
+   "nhn": 42.18,
+   "flur": 7.72,
+   "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1856,7 +1856,7 @@
    "flur": 4.33,
    "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1865,11 +1865,11 @@
    "state": "Berlin",
    "lat": 52.54351,
    "lon": 13.45521,
-   "nhn": 38.88,
-   "flur": 10.98,
-   "pct": 11.7,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 38.83,
+   "flur": 11.03,
+   "pct": 6.7,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1882,7 +1882,7 @@
    "flur": 3.41,
    "pct": 2.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -1893,9 +1893,9 @@
    "lon": 13.43961,
    "nhn": 39.79,
    "flur": 9.18,
-   "pct": 1.4,
+   "pct": 1.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1908,7 +1908,7 @@
    "flur": 4.64,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1917,11 +1917,11 @@
    "state": "Berlin",
    "lat": 52.51543,
    "lon": 13.57503,
-   "nhn": 39.63,
-   "flur": 2.22,
-   "pct": 11,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 39.59,
+   "flur": 2.26,
+   "pct": 9.6,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1932,9 +1932,9 @@
    "lon": 13.47752,
    "nhn": 44.34,
    "flur": 6.88,
-   "pct": 1.8,
+   "pct": 1.9,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1956,11 +1956,11 @@
    "state": "Berlin",
    "lat": 52.42092,
    "lon": 13.63002,
-   "nhn": 31.89,
-   "flur": 0.95,
-   "pct": 10,
+   "nhn": 31.9,
+   "flur": 0.94,
+   "pct": 11.2,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1969,11 +1969,11 @@
    "state": "Berlin",
    "lat": 52.41726,
    "lon": 13.68564,
-   "nhn": 32.05,
-   "flur": 1.37,
-   "pct": 16.7,
+   "nhn": 32.06,
+   "flur": 1.36,
+   "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1982,11 +1982,11 @@
    "state": "Berlin",
    "lat": 52.42761,
    "lon": 13.60513,
-   "nhn": 31.85,
-   "flur": 1.81,
-   "pct": 18.2,
+   "nhn": 31.86,
+   "flur": 1.8,
+   "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -1999,7 +1999,7 @@
    "flur": 1.35,
    "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2008,11 +2008,11 @@
    "state": "Berlin",
    "lat": 52.51021,
    "lon": 13.39196,
-   "nhn": 31.1,
-   "flur": 3.45,
-   "pct": 5,
+   "nhn": 31.11,
+   "flur": 3.44,
+   "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2023,9 +2023,9 @@
    "lon": 13.61787,
    "nhn": 32.44,
    "flur": 1.03,
-   "pct": 18.3,
+   "pct": 19.2,
    "cls": "low",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -2034,11 +2034,11 @@
    "state": "Berlin",
    "lat": 52.60076,
    "lon": 13.41875,
-   "nhn": 42.57,
-   "flur": 9.9,
-   "pct": 12.2,
+   "nhn": 42.58,
+   "flur": 9.89,
+   "pct": 13.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2047,11 +2047,11 @@
    "state": "Berlin",
    "lat": 52.61878,
    "lon": 13.39108,
-   "nhn": 48.14,
-   "flur": 5.33,
-   "pct": 1.8,
+   "nhn": 48.12,
+   "flur": 5.35,
+   "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2062,9 +2062,9 @@
    "lon": 13.6072,
    "nhn": 44.46,
    "flur": 13.19,
-   "pct": 3.3,
+   "pct": 3.6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2077,7 +2077,7 @@
    "flur": 12.63,
    "pct": 4.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2086,11 +2086,11 @@
    "state": "Berlin",
    "lat": 52.52486,
    "lon": 13.62119,
-   "nhn": 42.46,
-   "flur": 19.13,
-   "pct": 4.5,
+   "nhn": 42.47,
+   "flur": 19.12,
+   "pct": 5.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -2099,11 +2099,11 @@
    "state": "Berlin",
    "lat": 52.53957,
    "lon": 13.63078,
-   "nhn": 47.48,
-   "flur": 10.32,
-   "pct": 0,
+   "nhn": 47.49,
+   "flur": 10.31,
+   "pct": 0.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2127,9 +2127,9 @@
    "lon": 13.60839,
    "nhn": 37.99,
    "flur": 17,
-   "pct": 6.5,
+   "pct": 7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2138,11 +2138,11 @@
    "state": "Berlin",
    "lat": 52.57917,
    "lon": 13.44381,
-   "nhn": 45.09,
-   "flur": 2.67,
-   "pct": 2.2,
+   "nhn": 45.1,
+   "flur": 2.66,
+   "pct": 2.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2155,7 +2155,7 @@
    "flur": 3.64,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2168,7 +2168,7 @@
    "flur": 2.75,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2177,11 +2177,11 @@
    "state": "Berlin",
    "lat": 52.51023,
    "lon": 13.39196,
-   "nhn": 31.18,
-   "flur": 3.38,
-   "pct": 25,
+   "nhn": 31.19,
+   "flur": 3.37,
+   "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2194,7 +2194,7 @@
    "flur": 5.08,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2207,7 +2207,7 @@
    "flur": 5.34,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2220,7 +2220,7 @@
    "flur": 3.3,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2229,11 +2229,11 @@
    "state": "Berlin",
    "lat": 52.51951,
    "lon": 13.39987,
-   "nhn": 30.83,
-   "flur": 3.66,
-   "pct": 20,
+   "nhn": 30.81,
+   "flur": 3.68,
+   "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2246,7 +2246,7 @@
    "flur": 4.84,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2259,7 +2259,7 @@
    "flur": 3.13,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2272,7 +2272,7 @@
    "flur": 5.01,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2285,7 +2285,7 @@
    "flur": 3.24,
    "pct": 6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2307,11 +2307,11 @@
    "state": "Berlin",
    "lat": 52.48204,
    "lon": 13.55985,
-   "nhn": 32.47,
-   "flur": 4.02,
-   "pct": 2,
+   "nhn": 32.48,
+   "flur": 4.01,
+   "pct": 4,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2324,7 +2324,7 @@
    "flur": 4.61,
    "pct": 5.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2337,7 +2337,7 @@
    "flur": 3.43,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2346,11 +2346,11 @@
    "state": "Berlin",
    "lat": 52.60998,
    "lon": 13.44308,
-   "nhn": 46.81,
-   "flur": 2.4,
-   "pct": 27.5,
+   "nhn": 46.8,
+   "flur": 2.41,
+   "pct": 25,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2363,7 +2363,7 @@
    "flur": 2.54,
    "pct": 1.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2374,9 +2374,9 @@
    "lon": 13.46094,
    "nhn": 48.26,
    "flur": 1.59,
-   "pct": 11.5,
+   "pct": 11.7,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2389,7 +2389,7 @@
    "flur": 1.88,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2402,7 +2402,7 @@
    "flur": 3.91,
    "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2411,11 +2411,11 @@
    "state": "Berlin",
    "lat": 52.4449,
    "lon": 13.50438,
-   "nhn": 31.01,
-   "flur": 3.54,
-   "pct": 11.4,
+   "nhn": 31.02,
+   "flur": 3.53,
+   "pct": 12.9,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2424,11 +2424,11 @@
    "state": "Berlin",
    "lat": 52.44756,
    "lon": 13.55728,
-   "nhn": 32.23,
-   "flur": 3.8,
-   "pct": 10,
+   "nhn": 32.24,
+   "flur": 3.79,
+   "pct": 12.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2437,11 +2437,11 @@
    "state": "Berlin",
    "lat": 52.40071,
    "lon": 13.58436,
-   "nhn": 33.19,
-   "flur": 1.42,
-   "pct": 10.6,
+   "nhn": 33.2,
+   "flur": 1.41,
+   "pct": 11.2,
    "cls": "low",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2452,9 +2452,9 @@
    "lon": 13.49396,
    "nhn": 51.01,
    "flur": 2.62,
-   "pct": 7.7,
+   "pct": 8.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2463,11 +2463,11 @@
    "state": "Berlin",
    "lat": 52.50321,
    "lon": 13.499,
-   "nhn": 33.95,
-   "flur": 1.85,
-   "pct": 5.7,
+   "nhn": 33.94,
+   "flur": 1.86,
+   "pct": 4.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2480,7 +2480,7 @@
    "flur": 2.54,
    "pct": 25,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2493,7 +2493,7 @@
    "flur": 3.68,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -2506,7 +2506,7 @@
    "flur": 8.36,
    "pct": 26.7,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2519,7 +2519,7 @@
    "flur": 2.6,
    "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2528,11 +2528,11 @@
    "state": "Berlin",
    "lat": 52.50214,
    "lon": 13.41475,
-   "nhn": 31.87,
-   "flur": 3.2,
-   "pct": 6.7,
-   "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 31.88,
+   "flur": 3.19,
+   "pct": 10,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2541,11 +2541,11 @@
    "state": "Berlin",
    "lat": 52.56809,
    "lon": 13.30499,
-   "nhn": 30.63,
-   "flur": 6.18,
+   "nhn": 30.62,
+   "flur": 6.19,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2556,9 +2556,9 @@
    "lon": 13.30492,
    "nhn": 31.76,
    "flur": 5.05,
-   "pct": 2.2,
+   "pct": 2.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2571,7 +2571,7 @@
    "flur": 2.65,
    "pct": 1.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2582,9 +2582,9 @@
    "lon": 13.27515,
    "nhn": 29,
    "flur": 4.61,
-   "pct": 3.1,
+   "pct": 3.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2597,7 +2597,7 @@
    "flur": 5.63,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2606,11 +2606,11 @@
    "state": "Berlin",
    "lat": 52.59099,
    "lon": 13.27039,
-   "nhn": 30.64,
-   "flur": 4.96,
-   "pct": 4.3,
+   "nhn": 30.65,
+   "flur": 4.95,
+   "pct": 5.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2623,7 +2623,7 @@
    "flur": 3.88,
    "pct": 11,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2632,11 +2632,11 @@
    "state": "Berlin",
    "lat": 52.58636,
    "lon": 13.23613,
-   "nhn": 29.02,
-   "flur": 5.8,
-   "pct": 7.8,
+   "nhn": 29.03,
+   "flur": 5.79,
+   "pct": 9.1,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2649,7 +2649,7 @@
    "flur": 5.26,
    "pct": 11.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2658,11 +2658,11 @@
    "state": "Berlin",
    "lat": 52.59581,
    "lon": 13.22232,
-   "nhn": 30.7,
-   "flur": 5.54,
-   "pct": 10.8,
+   "nhn": 30.71,
+   "flur": 5.53,
+   "pct": 11.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2671,11 +2671,11 @@
    "state": "Berlin",
    "lat": 52.59579,
    "lon": 13.22247,
-   "nhn": 30.66,
-   "flur": 5.84,
-   "pct": 4.2,
+   "nhn": 30.67,
+   "flur": 5.83,
+   "pct": 5.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2688,7 +2688,7 @@
    "flur": 4.37,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2701,7 +2701,7 @@
    "flur": 2.53,
    "pct": 11.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2710,11 +2710,11 @@
    "state": "Berlin",
    "lat": 52.61217,
    "lon": 13.23164,
-   "nhn": 31.43,
-   "flur": 2.02,
-   "pct": 15,
-   "cls": "low",
-   "measured_at": "2026-10-25T00:00:00",
+   "nhn": 31.35,
+   "flur": 2.1,
+   "pct": 5.7,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2727,7 +2727,7 @@
    "flur": 17.42,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2740,7 +2740,7 @@
    "flur": 17.15,
    "pct": 6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2753,7 +2753,7 @@
    "flur": 16.93,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2762,11 +2762,11 @@
    "state": "Berlin",
    "lat": 52.62547,
    "lon": 13.22667,
-   "nhn": 30.34,
-   "flur": 3.94,
-   "pct": 6,
+   "nhn": 30.35,
+   "flur": 3.93,
+   "pct": 8,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2777,9 +2777,9 @@
    "lon": 13.22656,
    "nhn": 30.88,
    "flur": 3.2,
-   "pct": 2.5,
+   "pct": 2.9,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2805,7 +2805,7 @@
    "flur": 3.33,
    "pct": 6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2816,9 +2816,9 @@
    "lon": 13.49199,
    "nhn": 51.45,
    "flur": 2.63,
-   "pct": 7.1,
+   "pct": 8.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2831,7 +2831,7 @@
    "flur": 4.51,
    "pct": 2.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2840,11 +2840,11 @@
    "state": "Berlin",
    "lat": 52.60078,
    "lon": 13.41876,
-   "nhn": 42.87,
-   "flur": 9.5,
-   "pct": 15,
+   "nhn": 42.88,
+   "flur": 9.49,
+   "pct": 17.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2853,11 +2853,11 @@
    "state": "Berlin",
    "lat": 52.50215,
    "lon": 13.25977,
-   "nhn": 30.21,
-   "flur": 25.55,
-   "pct": 3.3,
+   "nhn": 30.2,
+   "flur": 25.56,
+   "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2879,11 +2879,11 @@
    "state": "Berlin",
    "lat": 52.53495,
    "lon": 13.60728,
-   "nhn": 49.05,
-   "flur": 8.6,
-   "pct": 1.2,
+   "nhn": 49.06,
+   "flur": 8.59,
+   "pct": 1.8,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2892,11 +2892,11 @@
    "state": "Berlin",
    "lat": 52.5133,
    "lon": 13.56499,
-   "nhn": 42.76,
-   "flur": 7.14,
+   "nhn": 42.75,
+   "flur": 7.15,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2922,7 +2922,7 @@
    "flur": 4.94,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2931,11 +2931,11 @@
    "state": "Berlin",
    "lat": 52.44155,
    "lon": 13.48803,
-   "nhn": 31.59,
-   "flur": 2.56,
-   "pct": 23.8,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 31.6,
+   "flur": 2.55,
+   "pct": 25.8,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2944,11 +2944,11 @@
    "state": "Berlin",
    "lat": 52.37477,
    "lon": 13.66629,
-   "nhn": 32.32,
-   "flur": 0.63,
-   "pct": 25,
+   "nhn": 32.33,
+   "flur": 0.62,
+   "pct": 30,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2957,11 +2957,11 @@
    "state": "Berlin",
    "lat": 52.54756,
    "lon": 13.47413,
-   "nhn": 39.14,
-   "flur": 12.99,
-   "pct": 28.3,
-   "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 38.79,
+   "flur": 13.34,
+   "pct": 4.3,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2970,11 +2970,11 @@
    "state": "Berlin",
    "lat": 52.48547,
    "lon": 13.25749,
-   "nhn": 29.97,
-   "flur": 12.46,
+   "nhn": 29.96,
+   "flur": 12.47,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -2983,11 +2983,11 @@
    "state": "Berlin",
    "lat": 52.50089,
    "lon": 13.22288,
-   "nhn": 28.19,
-   "flur": 23.21,
-   "pct": 3.3,
+   "nhn": 28.18,
+   "flur": 23.22,
+   "pct": 2.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3000,7 +3000,7 @@
    "flur": 31.25,
    "pct": 25,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3009,11 +3009,11 @@
    "state": "Berlin",
    "lat": 52.47982,
    "lon": 13.20754,
-   "nhn": 25.01,
-   "flur": 31.77,
-   "pct": 73.8,
+   "nhn": 24.51,
+   "flur": 32.27,
+   "pct": 46,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3022,11 +3022,11 @@
    "state": "Berlin",
    "lat": 52.47986,
    "lon": 13.20751,
-   "nhn": 25.12,
-   "flur": 31.6,
-   "pct": 74.3,
+   "nhn": 24.64,
+   "flur": 32.08,
+   "pct": 48.2,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3035,11 +3035,11 @@
    "state": "Berlin",
    "lat": 52.46011,
    "lon": 13.27745,
-   "nhn": 32.09,
-   "flur": 20.07,
-   "pct": 1.7,
+   "nhn": 32.1,
+   "flur": 20.06,
+   "pct": 3.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3052,7 +3052,7 @@
    "flur": 7.3,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3061,11 +3061,11 @@
    "state": "Berlin",
    "lat": 52.41623,
    "lon": 13.36991,
-   "nhn": 35.55,
-   "flur": 7.73,
+   "nhn": 35.54,
+   "flur": 7.74,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3078,7 +3078,7 @@
    "flur": 8.31,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3091,7 +3091,7 @@
    "flur": 8.39,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3104,7 +3104,7 @@
    "flur": 10.09,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3117,7 +3117,7 @@
    "flur": 5.57,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3126,11 +3126,11 @@
    "state": "Berlin",
    "lat": 52.4618,
    "lon": 13.30577,
-   "nhn": 32.95,
-   "flur": 12.72,
-   "pct": 1.7,
+   "nhn": 32.96,
+   "flur": 12.71,
+   "pct": 3.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3141,9 +3141,9 @@
    "lon": 13.30584,
    "nhn": 32.7,
    "flur": 13.08,
-   "pct": 2,
+   "pct": 2.4,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3156,7 +3156,7 @@
    "flur": 30.7,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3165,11 +3165,11 @@
    "state": "Berlin",
    "lat": 52.47014,
    "lon": 13.21848,
-   "nhn": 25.67,
-   "flur": 31.67,
-   "pct": 63.3,
+   "nhn": 25.4,
+   "flur": 31.94,
+   "pct": 40,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3182,7 +3182,7 @@
    "flur": 1.61,
    "pct": 15,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3195,7 +3195,7 @@
    "flur": 13.02,
    "pct": 22.5,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3208,7 +3208,7 @@
    "flur": 9.52,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3221,7 +3221,7 @@
    "flur": 26.21,
    "pct": 25,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3234,7 +3234,7 @@
    "flur": 10.26,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3243,11 +3243,11 @@
    "state": "Berlin",
    "lat": 52.48945,
    "lon": 13.35211,
-   "nhn": 31.83,
-   "flur": 3.93,
-   "pct": 1.7,
+   "nhn": 31.82,
+   "flur": 3.94,
+   "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3256,11 +3256,11 @@
    "state": "Berlin",
    "lat": 52.48134,
    "lon": 13.36294,
-   "nhn": 32.41,
-   "flur": 12.31,
+   "nhn": 32.4,
+   "flur": 12.32,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3273,7 +3273,7 @@
    "flur": 10.35,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3284,9 +3284,9 @@
    "lon": 13.50268,
    "nhn": 31.52,
    "flur": 3.67,
-   "pct": 10.8,
+   "pct": 10.9,
    "cls": "low",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3295,11 +3295,11 @@
    "state": "Berlin",
    "lat": 52.50123,
    "lon": 13.34994,
-   "nhn": 31.31,
-   "flur": 3.48,
-   "pct": 16.7,
+   "nhn": 31.32,
+   "flur": 3.47,
+   "pct": 20,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3312,7 +3312,7 @@
    "flur": 14.24,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3338,7 +3338,7 @@
    "flur": 0.46,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3349,9 +3349,9 @@
    "lon": 13.49379,
    "nhn": 51.46,
    "flur": 2.38,
-   "pct": 35,
+   "pct": 35.2,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3360,11 +3360,11 @@
    "state": "Berlin",
    "lat": 52.43006,
    "lon": 13.366,
-   "nhn": 34.91,
-   "flur": 10.64,
+   "nhn": 34.9,
+   "flur": 10.65,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3373,11 +3373,11 @@
    "state": "Berlin",
    "lat": 52.66551,
    "lon": 13.47397,
-   "nhn": 56.32,
-   "flur": 2.4,
-   "pct": 25.5,
-   "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 56.31,
+   "flur": 2.41,
+   "pct": 23.3,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3386,11 +3386,11 @@
    "state": "Berlin",
    "lat": 52.43288,
    "lon": 13.28386,
-   "nhn": 34.1,
-   "flur": 7.38,
-   "pct": 0,
+   "nhn": 34.12,
+   "flur": 7.36,
+   "pct": 1.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3399,11 +3399,11 @@
    "state": "Berlin",
    "lat": 52.48598,
    "lon": 13.54642,
-   "nhn": 32.72,
-   "flur": 3.56,
+   "nhn": 32.71,
+   "flur": 3.57,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3416,7 +3416,7 @@
    "flur": 6.8,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3425,11 +3425,11 @@
    "state": "Berlin",
    "lat": 52.44723,
    "lon": 13.40719,
-   "nhn": 33.29,
-   "flur": 12.46,
-   "pct": 10,
+   "nhn": 33.3,
+   "flur": 12.45,
+   "pct": 12,
    "cls": "low",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3438,11 +3438,11 @@
    "state": "Berlin",
    "lat": 52.58238,
    "lon": 13.55121,
-   "nhn": 52.72,
-   "flur": 3.16,
+   "nhn": 52.71,
+   "flur": 3.17,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3455,7 +3455,7 @@
    "flur": 7.02,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3468,7 +3468,7 @@
    "flur": 2.07,
    "pct": 23.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3481,7 +3481,7 @@
    "flur": 1.85,
    "pct": 11.7,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3490,11 +3490,11 @@
    "state": "Berlin",
    "lat": 52.42429,
    "lon": 13.51789,
-   "nhn": 32.7,
-   "flur": 3.25,
-   "pct": 10,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 32.68,
+   "flur": 3.27,
+   "pct": 5,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3505,9 +3505,9 @@
    "lon": 13.54218,
    "nhn": 37.67,
    "flur": 14.58,
-   "pct": 1.3,
+   "pct": 1.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3516,11 +3516,11 @@
    "state": "Berlin",
    "lat": 52.52023,
    "lon": 13.54215,
-   "nhn": 37.38,
-   "flur": 14.92,
-   "pct": 1,
+   "nhn": 37.39,
+   "flur": 14.91,
+   "pct": 2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3533,7 +3533,7 @@
    "flur": 3.24,
    "pct": 8.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3542,11 +3542,11 @@
    "state": "Berlin",
    "lat": 52.58458,
    "lon": 13.30242,
-   "nhn": 31.28,
-   "flur": 4.51,
+   "nhn": 31.27,
+   "flur": 4.52,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3559,7 +3559,7 @@
    "flur": 4.3,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3572,7 +3572,7 @@
    "flur": 8.02,
    "pct": 2.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3581,11 +3581,11 @@
    "state": "Berlin",
    "lat": 52.63849,
    "lon": 13.45685,
-   "nhn": 50.29,
-   "flur": 2.64,
-   "pct": 24,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 50.3,
+   "flur": 2.63,
+   "pct": 25.6,
+   "cls": "normal",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3594,11 +3594,11 @@
    "state": "Berlin",
    "lat": 52.63849,
    "lon": 13.45688,
-   "nhn": 50.68,
-   "flur": 2.13,
-   "pct": 30,
+   "nhn": 50.69,
+   "flur": 2.12,
+   "pct": 32.5,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3611,7 +3611,7 @@
    "flur": 2.24,
    "pct": 21.1,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3624,7 +3624,7 @@
    "flur": 16.72,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3637,7 +3637,7 @@
    "flur": 14.65,
    "pct": 9.3,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3659,11 +3659,11 @@
    "state": "Berlin",
    "lat": 52.5263,
    "lon": 13.58007,
-   "nhn": 40.92,
-   "flur": 1.29,
-   "pct": 57.1,
+   "nhn": 40.88,
+   "flur": 1.33,
+   "pct": 50.8,
    "cls": "normal",
-   "measured_at": "2026-10-31T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3672,11 +3672,11 @@
    "state": "Berlin",
    "lat": 52.47093,
    "lon": 13.48791,
-   "nhn": 31.95,
-   "flur": 2.58,
-   "pct": 15,
+   "nhn": 31.96,
+   "flur": 2.57,
+   "pct": 19.4,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3689,7 +3689,7 @@
    "flur": 2.62,
    "pct": 16,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3702,7 +3702,7 @@
    "flur": 6.18,
    "pct": 43.3,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3711,11 +3711,11 @@
    "state": "Berlin",
    "lat": 52.50254,
    "lon": 13.4565,
-   "nhn": 32.6,
-   "flur": 3.3,
-   "pct": 40,
-   "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 32.56,
+   "flur": 3.34,
+   "pct": 16.7,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3724,11 +3724,11 @@
    "state": "Berlin",
    "lat": 52.52275,
    "lon": 13.37931,
-   "nhn": 30.79,
-   "flur": 2.67,
-   "pct": 30,
-   "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 30.78,
+   "flur": 2.68,
+   "pct": 20,
+   "cls": "low",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3737,11 +3737,11 @@
    "state": "Berlin",
    "lat": 52.52358,
    "lon": 13.38985,
-   "nhn": 30.84,
-   "flur": 3.67,
-   "pct": 10,
-   "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "nhn": 30.83,
+   "flur": 3.68,
+   "pct": 6.7,
+   "cls": "vlow",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3754,7 +3754,7 @@
    "flur": 3.73,
    "pct": 7.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3765,9 +3765,9 @@
    "lon": 13.54574,
    "nhn": 32.09,
    "flur": 3,
-   "pct": 5,
+   "pct": 6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3776,11 +3776,11 @@
    "state": "Berlin",
    "lat": 52.54106,
    "lon": 13.47771,
-   "nhn": 53.44,
-   "flur": 4.34,
+   "nhn": 53.43,
+   "flur": 4.35,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3789,11 +3789,11 @@
    "state": "Berlin",
    "lat": 52.43443,
    "lon": 13.49319,
-   "nhn": 32.35,
-   "flur": 1.99,
-   "pct": 10,
+   "nhn": 32.36,
+   "flur": 1.98,
+   "pct": 15,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3802,11 +3802,11 @@
    "state": "Berlin",
    "lat": 52.54547,
    "lon": 13.39357,
-   "nhn": 39.98,
-   "flur": 6.26,
-   "pct": 0,
+   "nhn": 39.99,
+   "flur": 6.25,
+   "pct": 0.6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3815,11 +3815,11 @@
    "state": "Berlin",
    "lat": 52.59044,
    "lon": 13.4433,
-   "nhn": 44.29,
-   "flur": 1.71,
-   "pct": 6.5,
+   "nhn": 44.28,
+   "flur": 1.72,
+   "pct": 6.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3832,7 +3832,7 @@
    "flur": 3.95,
    "pct": 10,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3843,9 +3843,9 @@
    "lon": 13.50361,
    "nhn": 30.74,
    "flur": 3.6,
-   "pct": 14.9,
+   "pct": 15.2,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3858,7 +3858,7 @@
    "flur": 3.16,
    "pct": 23.3,
    "cls": "low",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3869,9 +3869,9 @@
    "lon": 13.49633,
    "nhn": 30.11,
    "flur": 4.26,
-   "pct": 33.3,
+   "pct": 33.8,
    "cls": "normal",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3884,7 +3884,7 @@
    "flur": 8.56,
    "pct": 6,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3893,11 +3893,11 @@
    "state": "Berlin",
    "lat": 52.50516,
    "lon": 13.54608,
-   "nhn": 34.39,
-   "flur": 3.08,
-   "pct": 3.3,
+   "nhn": 34.4,
+   "flur": 3.07,
+   "pct": 6.7,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3910,7 +3910,7 @@
    "flur": 8.11,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3923,7 +3923,7 @@
    "flur": 6.88,
    "pct": 0,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-02T00:00:00",
    "source": "be"
   },
   {
@@ -3932,11 +3932,11 @@
    "state": "Berlin",
    "lat": 52.49791,
    "lon": 13.56844,
-   "nhn": 34.53,
-   "flur": 2.02,
-   "pct": 6.3,
+   "nhn": 34.52,
+   "flur": 2.03,
+   "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3949,7 +3949,7 @@
    "flur": 3.38,
    "pct": 2.5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3958,11 +3958,11 @@
    "state": "Berlin",
    "lat": 52.50496,
    "lon": 13.55235,
-   "nhn": 34.55,
-   "flur": 3.4,
-   "pct": 2.5,
+   "nhn": 34.56,
+   "flur": 3.39,
+   "pct": 5,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3975,7 +3975,7 @@
    "flur": 3.94,
    "pct": 9.2,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
@@ -3988,7 +3988,7 @@
    "flur": 3.43,
    "pct": 7.8,
    "cls": "vlow",
-   "measured_at": "2026-11-01T00:00:00",
+   "measured_at": "2026-11-03T00:00:00",
    "source": "be"
   },
   {
