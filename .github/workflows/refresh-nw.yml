@@ -1,0 +1,44 @@
+name: Refresh NRW snapshot (OpenHygrisC)
+
+# NRW has no stable live API, so adapters/nw.js reads a committed snapshot
+# (data/nw.levels.json). This job regenerates that snapshot from the state's
+# bulk open-data export. It is heavy (~256 MB download) and the source only
+# updates occasionally, so it runs monthly — the twice-weekly fetch-data.yml
+# just re-reads whatever snapshot is committed.
+
+on:
+  schedule:
+    - cron: '41 3 1 * *'      # 1st of each month, 03:41 UTC (best-effort)
+  workflow_dispatch: {}        # manual "Run workflow" button
+
+concurrency:
+  group: refresh-nw
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild NRW levels from OpenHygrisC
+        run: node scripts/build-nw-openhygrisc.js
+
+      - name: Commit snapshot
+        run: |
+          git config user.name  "gw-bot"
+          git config user.email "gw-bot@users.noreply.github.com"
+          git add data/nw.levels.json
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: refresh NRW OpenHygrisC snapshot $(date -u +%F)"
+            git push
+          fi
