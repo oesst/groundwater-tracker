@@ -21,7 +21,8 @@ import { quantiles11, percentileFromQuantiles } from '../lib/percentile.js';
 
 const BASE = 'https://www.elwasweb.nrw.de/elwas-web/data/gw/zustand/gwm/'
            + 'grundwasserMst.xhtml?marea=1&mtheme=0&lindex=0&nested=true';
-const UA = 'grundwasser-de/0.1 (+github; daily static pipeline)';
+// A browser UA: ELWAS/PrimeFaces serves a reduced/inconsistent page to non-browser clients.
+const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36';
 
 async function loadStations() {
   try {
@@ -51,7 +52,8 @@ async function req(jar, url, { method = 'GET', body, headers = {} } = {}, timeou
   try {
     const res = await fetch(url, {
       method, body, redirect: 'follow', signal: ctl.signal,
-      headers: { 'User-Agent': UA, 'Accept-Language': 'de', Cookie: cookieHeader(jar), ...headers },
+      headers: { 'User-Agent': UA, 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                 'Accept-Language': 'de,en;q=0.8', Cookie: cookieHeader(jar), ...headers },
     });
     storeCookies(jar, res);
     const text = await res.text();
@@ -75,12 +77,12 @@ function parseForms(html) {
     for (const im of inner.matchAll(/<input\b([^>]*)>/gi)) {
       const a = im[1];
       const name = (a.match(/\bname="([^"]*)"/i) || [])[1]; if (!name) continue;
-      if (/\bdisabled\b/i.test(a)) continue;
+      if (/(?:^|\s)disabled(?:=|\s|\/|>|$)/i.test(a)) continue;
       const type = ((a.match(/\btype="([^"]*)"/i) || [])[1] || 'text').toLowerCase();
       const value = (a.match(/\bvalue="([^"]*)"/i) || [])[1] || '';
       if (['submit', 'button', 'image'].includes(type)) controls.push([name, value]);
       else if (!['reset', 'file'].includes(type) &&
-               (!['checkbox', 'radio'].includes(type) || /\bchecked\b/i.test(a))) fields.push([name, value]);
+               (!['checkbox', 'radio'].includes(type) || /(?:^|\s)checked(?:=|\s|\/|>|$)/i.test(a))) fields.push([name, value]);
     }
     for (const bm of inner.matchAll(/<button\b([^>]*)>/gi)) {
       const a = bm[1]; const name = (a.match(/\bname="([^"]*)"/i) || [])[1];
@@ -186,6 +188,17 @@ export default {
     const stations = await loadStations();
     if (!stations.length) return [];
     const out = await mapLimit(stations, 4, (st) => fetchStation(st));
-    return out.filter((r) => r && !r.__error && r.nhn != null);
+    const good = out.filter((r) => r && !r.__error && r.nhn != null);
+    // Surface the failure when nothing came back, so the run log / source error
+    // names the failing step instead of a silent empty result.
+    if (!good.length) {
+      const errs = out.filter((r) => r && r.__error).map((r) => r.__error);
+      const tally = {};
+      for (const e of errs) { const k = String(e).slice(0, 60); tally[k] = (tally[k] || 0) + 1; }
+      const top = Object.entries(tally).sort((a, b) => b[1] - a[1])[0];
+      throw new Error(`all ${stations.length} NRW stations failed`
+        + (top ? ` — most common: "${top[0]}" (${top[1]}×)` : ''));
+    }
+    return good;
   },
 };
