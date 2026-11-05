@@ -3,7 +3,7 @@ import by from './by.js';   // Bayern       — live (GKD per-well pages)
 import be from './be.js';   // Berlin       — live (Wasserportal CSV API)
 import bw from './bw.js';   // Baden-Württ. — live (LUBW GuQ JSON API)
 import nw from './nw.js';   // NRW          — live (OpenHygrisC open data, last-value/well)
-import ni from './ni.js';   // Niedersachs. — scaffold (NLWKN)
+import ni from './ni.js';   // Niedersachsen — live (NLWKN Grundwasserstand online REST/JSON)
 import pending from './pending.js';
 
 // Order: implemented/reliable first, then pending.
