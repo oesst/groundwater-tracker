@@ -14,7 +14,6 @@
 //   ST  LHW Sachsen-Anhalt — Gewässerkundlicher Landesdienst
 //   SN  LfULG Sachsen — iDA / Wasserportal Sachsen
 //   TH  TLUBN Thüringen
-//   HE  HLNUG — "Grundwasser online" (Grundwasserportal Hessen)
 //   RP  LfU Rheinland-Pfalz — Wasserportal / Geodaten
 //   SL  LUA Saarland
 //   GRUVO  BGR — served as map tiles (ArcGIS export), not a public feature query;
@@ -41,11 +40,6 @@ export default [
   pending('st', 'Sachsen-Anhalt — LHW'),
   pending('sn', 'Sachsen — LfULG'),
   pending('th', 'Thüringen — TLUBN'),
-  pending('he', 'Hessen — HLNUG'),
   pending('rp', 'Rheinland-Pfalz — LfU'),
   pending('sl', 'Saarland — LUA'),
-  pending('gruvo', 'BGR GRUVO — Monatsklasse', {
-    kind: 'model', cadence: 'monatlich',
-    attribution: '© BGR (GRUVO)', license: 'siehe BGR',
-  }),
 ];
