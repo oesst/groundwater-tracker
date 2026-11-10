@@ -1,0 +1,10 @@
+# data/latest.json is a generated snapshot written both by the CI pipeline and
+# (for immediate preview) locally. Both sides regenerate it wholesale, so a
+# 3-way merge is meaningless and only produces conflicts. Treat it with the
+# "ours" merge driver: on any merge, keep the current checkout unchanged and let
+# the next pipeline run refresh it — never stop with a conflict.
+#
+# One-time setup per clone (the driver can't be committed, for security):
+#   git config merge.ours.driver true
+#
+data/latest.json merge=ours

@@ -31,10 +31,17 @@ jobs:
         run: |
           git config user.name  "gw-bot"
           git config user.email "gw-bot@users.noreply.github.com"
+          # latest.json never 3-way-merges (see .gitattributes); keep our fresh one.
+          git config merge.ours.driver true
           git add data/latest.json
           if git diff --staged --quiet; then
             echo "No changes."
-          else
-            git commit -m "data: groundwater snapshot $(date -u +%F)"
-            git push
+            exit 0
           fi
+          git commit -m "data: groundwater snapshot $(date -u +%F)"
+          # Rebase/merge in anything pushed meanwhile, then push; retry on races.
+          for i in 1 2 3; do
+            git pull --no-rebase --no-edit origin main && git push && exit 0
+            echo "push race, retrying ($i)..."; sleep 5
+          done
+          echo "push failed after retries"; exit 1
