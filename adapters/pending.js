@@ -33,7 +33,6 @@ function pending(id, name, opts = {}) {
 
 export default [
   pending('sh', 'Schleswig-Holstein — LLUR'),
-  pending('hh', 'Hamburg — BUKEA'),
   pending('hb', 'Bremen — SUKW'),
   pending('mv', 'Mecklenburg-Vorpommern — LUNG'),
   pending('bb', 'Brandenburg — LfU'),

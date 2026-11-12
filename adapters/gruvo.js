@@ -26,7 +26,7 @@ const LAYER = 3;
 // Two-letter Bundesland prefixes that ALREADY have a dedicated adapter — GRUVO
 // skips these to avoid overlapping a state's own network. Update when adding a
 // state adapter.
-const WIRED = new Set(['BY', 'BE', 'BW', 'NW', 'NI', 'HE']);
+const WIRED = new Set(['BY', 'BE', 'BW', 'NW', 'NI', 'HE', 'HH']);
 
 const STATE = {
   BB: 'Brandenburg', BE: 'Berlin', BW: 'Baden-Württemberg', BY: 'Bayern',
