@@ -25,10 +25,10 @@ const LAYER = 3;
 // Some government ArcGIS servers reject non-browser clients; present a browser UA.
 const UA_HEADERS = { 'User-Agent': 'Mozilla/5.0 (compatible; grundwasser-de/1.0; +https://github.com/oesst/groundwater-tracker)', Accept: 'application/json' };
 
-// Two-letter Bundesland prefixes that ALREADY have a dedicated adapter — GRUVO
-// skips these to avoid overlapping a state's own network. Update when adding a
-// state adapter.
-const WIRED = new Set(['BY', 'BE', 'BW', 'NW', 'NI', 'HE', 'HH']);
+// GRUVO emits ALL stations nationwide. The frontend decides per view whether to
+// also show GRUVO over a state that already has its own live network (the
+// "GRUVO national" toggle) or only in the gap states (default) — it derives the
+// set of live states from the data, so there is no prefix filter to maintain here.
 
 const STATE = {
   BB: 'Brandenburg', BE: 'Berlin', BW: 'Baden-Württemberg', BY: 'Bayern',
@@ -78,9 +78,9 @@ function keyResolver(attrs) {
 
 export default {
   id: 'gruvo',
-  name: 'BGR GRUVO — Monatswert (Länder ohne eigenes Messnetz)',
+  name: 'BGR GRUVO — Monatswert (bundesweit)',
   kind: 'model',
-  cadence: 'Monatswert (BGR GRUVO), nur Länder ohne eigenen Adapter',
+  cadence: 'Monatswert (BGR GRUVO), bundesweite Modellklasse',
   attribution: 'Bundesanstalt für Geowissenschaften und Rohstoffe (BGR), GRUVO',
   license: '© BGR (GRUVO)',
   async fetch() {
@@ -107,7 +107,6 @@ export default {
         const id = a[K.well_id];
         if (!id) continue;
         const pre = String(id).slice(0, 2);
-        if (WIRED.has(pre)) continue;                 // state has its own adapter
         const band = CLS[a[K.state_now_c]];
         if (!band) continue;
         const lon = g.x, lat = g.y;

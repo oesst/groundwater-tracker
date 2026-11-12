@@ -13,8 +13,8 @@ const HEIGHT_NOTE={
   flur:'Tiefe zum Wasser. Hoher Balken = tiefes Wasser — läuft der Farbe entgegen.',
 };
 
-let DATA={sources:[],stations:[]}, SRC_KIND={};
-const S={layer:'live',view:'3d',height:'pct',azimuth:-0.35,pitch:0.62,zoom:1,
+let DATA={sources:[],stations:[]}, SRC_KIND={}, LIVE_STATES=new Set();
+const S={layer:'best',view:'3d',height:'pct',azimuth:-0.35,pitch:0.62,zoom:1,
          activeId:null,hoverId:null,active:new Set(CLASSES.map(c=>c.key))};
 
 const cv=document.getElementById('map'), ctx=cv.getContext('2d');
@@ -40,6 +40,9 @@ async function boot(){
     document.getElementById('banner').innerHTML='<b>Konnte data/latest.json nicht laden.</b> Lokal via <code>npm run serve</code> öffnen (nicht per file://).';
   }
   SRC_KIND=Object.fromEntries((DATA.sources||[]).map(s=>[s.id,s.kind]));
+  // Bundesländer that already have a live (non-model) network; GRUVO over these
+  // is the "national" layer, shown only when toggled on.
+  LIVE_STATES=new Set((DATA.stations||[]).filter(s=>SRC_KIND[s.source]!=='model').map(s=>s.state));
   banner(); attribution(); renderSources();
   document.getElementById('heightNote').textContent=HEIGHT_NOTE.pct;
   wireUI(); resize(); applyLayer();
@@ -80,12 +83,16 @@ function attribution(){
 /* ---------- layers ---------- */
 let VIS=[];
 function applyLayer(){
-  const wantModel=S.layer==='gruvo';
-  VIS=(DATA.stations||[]).filter(s=>((SRC_KIND[s.source]==='model')===wantModel));
-  const hs=document.getElementById('heightSel');
-  if(wantModel){S.height='pct';hs.value='pct';hs.disabled=true;} else hs.disabled=false;
+  const national=S.layer==='national';                 // else 'best' (default)
+  VIS=(DATA.stations||[]).filter(s=>{
+    if(SRC_KIND[s.source]!=='model') return true;      // live networks: always shown
+    const gap=!LIVE_STATES.has(s.state);               // GRUVO in a state without a live net
+    return gap || national;                            // gap-fill always; the rest only when national
+  });
   document.getElementById('heightNote').textContent=HEIGHT_NOTE[S.height];
-  document.getElementById('ribbonTitle').textContent=wantModel?'GRUVO-Klasse (monatlich)':'Live-Klasse (Länder)';
+  document.getElementById('ribbonTitle').textContent=national
+    ? 'Klasse — Live + GRUVO national (monatlich)'
+    : 'Klasse — beste Daten je Region';
   renderLegend(); draw();
 }
 const shown=()=>VIS.filter(s=>s.cls?S.active.has(s.cls):true);
