@@ -22,6 +22,8 @@
 const FOLDER = 'https://services.bgr.de/agswa/rest/services/grundwasser';
 const FALLBACK_VERSION = 'gruvo_v109_short';
 const LAYER = 3;
+// Some government ArcGIS servers reject non-browser clients; present a browser UA.
+const UA_HEADERS = { 'User-Agent': 'Mozilla/5.0 (compatible; grundwasser-de/1.0; +https://github.com/oesst/groundwater-tracker)', Accept: 'application/json' };
 
 // Two-letter Bundesland prefixes that ALREADY have a dedicated adapter — GRUVO
 // skips these to avoid overlapping a state's own network. Update when adding a
@@ -48,7 +50,7 @@ const STALE_DAYS = 45;  // monthly layer
 
 async function discoverVersion() {
   try {
-    const r = await fetch(`${FOLDER}?f=json`);
+    const r = await fetch(`${FOLDER}?f=json`, { headers: UA_HEADERS });
     const j = await r.json();
     const svcs = (j.services || [])
       .map((s) => s.name)
@@ -91,7 +93,7 @@ export default {
     for (;;) {
       const url = `${base}?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true`
         + `&f=json&resultOffset=${offset}&resultRecordCount=2000`;
-      const res = await fetch(url);
+      const res = await fetch(url, { headers: UA_HEADERS });
       if (!res.ok) throw new Error(`GRUVO HTTP ${res.status} (version ${version})`);
       const j = await res.json();
       if (j.error) throw new Error(`GRUVO query error: ${JSON.stringify(j.error)}`);
