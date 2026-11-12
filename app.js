@@ -85,13 +85,14 @@ let VIS=[];
 function applyLayer(){
   const national=S.layer==='national';                 // else 'best' (default)
   VIS=(DATA.stations||[]).filter(s=>{
-    if(SRC_KIND[s.source]!=='model') return true;      // live networks: always shown
-    const gap=!LIVE_STATES.has(s.state);               // GRUVO in a state without a live net
-    return gap || national;                            // gap-fill always; the rest only when national
+    const model=SRC_KIND[s.source]==='model';
+    if(national) return model;                          // GRUVO national: only the GRUVO model, all 16 states
+    if(!model) return true;                             // best: live networks always shown
+    return !LIVE_STATES.has(s.state);                   // best: GRUVO only where there is no live network
   });
   document.getElementById('heightNote').textContent=HEIGHT_NOTE[S.height];
   document.getElementById('ribbonTitle').textContent=national
-    ? 'Klasse — Live + GRUVO national (monatlich)'
+    ? 'Klasse — GRUVO national (nur Monatsmodell)'
     : 'Klasse — beste Daten je Region';
   renderLegend(); draw();
 }
