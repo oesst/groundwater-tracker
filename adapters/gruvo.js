@@ -46,7 +46,7 @@ const CLS = {
   5: { cls: 'vhigh',  pct: 95 },
 };
 
-const STALE_DAYS = 45;  // monthly layer
+const STALE_DAYS = 75;  // monthly layer — tolerate normal publish lag (≈2.5 cycles)
 
 async function discoverVersion() {
   try {
