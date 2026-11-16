@@ -50,6 +50,7 @@
   footer.foot{margin-top:18px;color:var(--ink-soft);font-size:12px;line-height:1.6}footer.foot b{color:var(--ink)}
   .src-credits{margin:6px 0 4px;padding-left:18px}.src-credits li{margin:2px 0}
   .src-note{margin:6px 0 0;opacity:.85}
+  .disclaimer{margin:10px 0 2px;padding:9px 12px;border-left:3px solid var(--line-strong);background:#f4f7f8;border-radius:6px;color:var(--ink-soft)}.disclaimer b{color:var(--ink)}
   code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
 </style>
 </head>
@@ -72,6 +73,7 @@
         <div class="seg" id="layerSeg">
           <button data-layer="best" class="on">Beste Daten (Live + Lücken)</button>
           <button data-layer="national">GRUVO national</button>
+          <button data-layer="rivers">Flüsse (Pegel)</button>
         </div>
         <div class="seg" id="viewSeg">
           <button data-view="3d" class="on">3D</button>
@@ -111,6 +113,9 @@
   <footer class="foot">
     <p><b>Architektur:</b> statische Seite auf GitHub Pages, täglich befüllt von einer GitHub-Action, die je Land
        einen isolierten Adapter ausführt und alles auf ein gemeinsames Schema normalisiert. Perzentil vs. Referenzzeitraum 1991–2020.</p>
+    <p class="disclaimer"><b>Ohne Gewähr:</b> Diese Darstellung dient der Veranschaulichung. Für Richtigkeit,
+       Vollständigkeit und Aktualität der Daten wird keine Gewähr übernommen — maßgeblich sind allein die amtlichen
+       Originaldaten der genannten Stellen.</p>
     <p id="attrib"></p>
   </footer>
 </div>

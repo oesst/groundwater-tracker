@@ -6,8 +6,9 @@ import nw from './nw.js';   // NRW          — live (OpenHygrisC open data, las
 import ni from './ni.js';   // Niedersachsen — live (NLWKN Grundwasserstand online REST/JSON)
 import he from './he.js';   // Hessen       — live (HLNUG Messdatenportal JSON, DFÜ)
 import hh from './hh.js';   // Hamburg       — live (BUKEA OGC API Features, daily)
-import gruvo from './gruvo.js'; // national fill (BGR GRUVO, unwired states only)
+import gruvo from './gruvo.js'; // national fill (BGR GRUVO, bundesweit)
+import pegelonline from './pegelonline.js'; // Oberflächengewässer (Flüsse/Kanäle), WSV PEGELONLINE
 import pending from './pending.js';
 
 // Order: implemented/reliable first, then pending.
-export const ADAPTERS = [by, be, bw, nw, ni, he, hh, gruvo, ...pending];
+export const ADAPTERS = [by, be, bw, nw, ni, he, hh, gruvo, pegelonline, ...pending];

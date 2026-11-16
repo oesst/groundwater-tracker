@@ -42,7 +42,7 @@ async function boot(){
   SRC_KIND=Object.fromEntries((DATA.sources||[]).map(s=>[s.id,s.kind]));
   // Bundesländer that already have a live (non-model) network; GRUVO over these
   // is the "national" layer, shown only when toggled on.
-  LIVE_STATES=new Set((DATA.stations||[]).filter(s=>SRC_KIND[s.source]!=='model').map(s=>s.state));
+  LIVE_STATES=new Set((DATA.stations||[]).filter(s=>SRC_KIND[s.source]==='state').map(s=>s.state));
   banner(); attribution(); renderSources();
   document.getElementById('heightNote').textContent=HEIGHT_NOTE.pct;
   wireUI(); resize(); applyLayer();
@@ -83,17 +83,25 @@ function attribution(){
 /* ---------- layers ---------- */
 let VIS=[];
 function applyLayer(){
-  const national=S.layer==='national';                 // else 'best' (default)
+  const layer=S.layer;                                  // 'best' | 'national' | 'rivers'
+  const rivers=layer==='rivers';
   VIS=(DATA.stations||[]).filter(s=>{
-    const model=SRC_KIND[s.source]==='model';
-    if(national) return model;                          // GRUVO national: only the GRUVO model, all 16 states
-    if(!model) return true;                             // best: live networks always shown
-    return !LIVE_STATES.has(s.state);                   // best: GRUVO only where there is no live network
+    const kind=SRC_KIND[s.source];
+    if(rivers) return kind==='river';                   // Flüsse: only the gauges
+    if(kind==='river') return false;                    // rivers live only in their own layer
+    if(layer==='national') return kind==='model';       // GRUVO national: only the model
+    if(kind!=='model') return true;                     // best: live networks always
+    return !LIVE_STATES.has(s.state);                   // best: GRUVO only in gap states
   });
-  document.getElementById('heightNote').textContent=HEIGHT_NOTE[S.height];
-  document.getElementById('ribbonTitle').textContent=national
-    ? 'Klasse — GRUVO national (nur Monatsmodell)'
-    : 'Klasse — beste Daten je Region';
+  const hs=document.getElementById('heightSel');
+  if(rivers){ S.height='pct'; hs.value='pct'; hs.disabled=true; } else { hs.disabled=false; }
+  document.getElementById('heightNote').textContent = rivers
+    ? 'Balkenhöhe = Lage im MNW–MHW-Band (Mittelwasser). Pfeil = Tendenz der letzten Stunden.'
+    : HEIGHT_NOTE[S.height];
+  document.getElementById('ribbonTitle').textContent =
+    rivers ? 'Klasse — Pegel (Wasserstand vs. Mittelwasser)' :
+    layer==='national' ? 'Klasse — GRUVO national (nur Monatsmodell)' :
+    'Klasse — beste Daten je Region';
   renderLegend(); draw();
 }
 const shown=()=>VIS.filter(s=>s.cls?S.active.has(s.cls):true);
@@ -115,6 +123,24 @@ function heightUnit(st){
 }
 function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function shade(hex,a){const n=parseInt(hex.slice(1),16);let r=(n>>16)+a,g=((n>>8)&255)+a,b=(n&255)+a;r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
+// Rising/falling tendency marker for river gauges. Shape carries the direction;
+// a white halo keeps it legible on any bar colour.
+function drawTrend(x,y,dir){
+  const s=4.8*S.zoom; ctx.save(); ctx.lineJoin='round';
+  if(dir==='stable'){
+    ctx.lineWidth=3.4;ctx.strokeStyle='#fff';ctx.beginPath();ctx.moveTo(x-s*0.8,y);ctx.lineTo(x+s*0.8,y);ctx.stroke();
+    ctx.lineWidth=1.7;ctx.strokeStyle='#54646c';ctx.beginPath();ctx.moveTo(x-s*0.8,y);ctx.lineTo(x+s*0.8,y);ctx.stroke();
+    ctx.restore();return;
+  }
+  const up=dir==='rising';
+  ctx.beginPath();
+  if(up){ctx.moveTo(x,y-s);ctx.lineTo(x-s*0.82,y+s*0.62);ctx.lineTo(x+s*0.82,y+s*0.62);}
+  else  {ctx.moveTo(x,y+s);ctx.lineTo(x-s*0.82,y-s*0.62);ctx.lineTo(x+s*0.82,y-s*0.62);}
+  ctx.closePath();
+  ctx.lineWidth=2.6;ctx.strokeStyle='#fff';ctx.stroke();
+  ctx.fillStyle='#12242c';ctx.fill();
+  ctx.restore();
+}
 
 const hitList=[];
 function draw(){
@@ -148,6 +174,10 @@ function draw(){
       if(st.stale&&!S.dragging){ctx.setLineDash([3,2]);ctx.lineWidth=1.4;ctx.strokeStyle=shade(col,-40);ctx.stroke();ctx.setLineDash([]);}
       if(act||hov){ctx.lineWidth=1.6;ctx.strokeStyle='#12242c';ctx.stroke();}
       if(!S.dragging){ctx.beginPath();ctx.ellipse(base.sx,topY,w/2,w*0.28,0,0,7);ctx.globalAlpha=st.stale?.5:1;ctx.fillStyle=shade(col,20);ctx.fill();ctx.globalAlpha=1;}
+    }
+    if(S.layer==='rivers' && st.trend && !S.dragging){
+      const ay=(flat?base.sy:Math.min(top.sy,base.sy))-9*S.zoom;
+      drawTrend(base.sx,ay,st.trend);
     }
     hitList.push({st,x:base.sx,yTop:Math.min(base.sy,top.sy),yBase:base.sy});
   }
@@ -203,12 +233,20 @@ function renderLegend(){
   if(ns){const note=document.createElement('div');note.className='it';note.style.cursor='default';
     note.innerHTML='<span class="sw" style="background:#fff;border:1.5px dashed #9aa7ad;box-sizing:border-box"></span>veraltet (letzter Wert)<span class="n">'+ns+'</span>';
     lg.appendChild(note);}
+  if(S.layer==='rivers'){
+    const t=document.createElement('div');t.className='it';t.style.cursor='default';t.style.marginTop='6px';
+    t.style.fontSize='12px';t.style.color='var(--ink-soft)';
+    t.innerHTML='Tendenz:&nbsp; <b style="color:#12242c">▲</b>&nbsp;steigend &nbsp; <b style="color:#12242c">▼</b>&nbsp;fallend &nbsp; <b style="color:#54646c">–</b>&nbsp;gleich';
+    lg.appendChild(t);
+  }
 }
 function toggle(k){if(S.active.has(k))S.active.delete(k);else S.active.add(k);if(!S.active.size)CLASSES.forEach(c=>S.active.add(c.key));renderLegend();draw();}
 function renderDetail(st){
   const d=document.getElementById('detail');
   if(!st){d.innerHTML='<div class="detail-empty">Balken antippen für Details (Meterwert, Stand, Quelle).</div>';return;}
   const cls=CLASS_BY[st.cls],src=(DATA.sources||[]).find(x=>x.id===st.source);
+  const isRiver=SRC_KIND[st.source]==='river';
+  const TREND_LABEL={rising:'steigend ▲',falling:'fallend ▼',stable:'gleichbleibend –'};
   const when=st.measured_at?new Date(st.measured_at).toLocaleDateString('de-DE'):'—';
   const ageDays=st.measured_at?Math.floor((Date.now()-new Date(st.measured_at))/86400000):null;
   const staleBadge=st.stale?'<span class="badge" style="background:#d98a00;margin:0 0 10px 8px">veraltet</span>':'';
@@ -216,8 +254,11 @@ function renderDetail(st){
   d.innerHTML='<div style="font-weight:700;font-size:15px;margin-bottom:2px">'+esc(st.name)+'</div>'+
     '<div class="muted" style="margin-bottom:8px">'+esc(st.state||'')+'</div>'+
     '<div class="badge" style="background:'+(cls?cls.hex:'#9aa7ad')+';margin-bottom:10px">'+(cls?cls.label:'ohne Klasse')+'</div>'+staleBadge+
-    '<dl class="kv">'+kv('Perzentil',st.pct==null?'—':st.pct+' %')+kv('m ü. NHN',st.nhn==null?'—':st.nhn+' m')+
-    kv('Flurabstand',st.flur==null?'—':st.flur+' m u. GOK')+kv('Stand',when)+kv('Quelle',src?esc(src.name):st.source)+'</dl>'+staleNote;
+    '<dl class="kv">'+
+    (isRiver
+      ? kv('Lage MNW–MHW',st.pct==null?'—':st.pct+' %')+kv('Tendenz',TREND_LABEL[st.trend]||'—')
+      : kv('Perzentil',st.pct==null?'—':st.pct+' %')+kv('m ü. NHN',st.nhn==null?'—':st.nhn+' m')+kv('Flurabstand',st.flur==null?'—':st.flur+' m u. GOK'))
+    +kv('Stand',when)+kv('Quelle',src?esc(src.name):st.source)+'</dl>'+staleNote;
 }
 const kv=(k,v)=>'<dt>'+k+'</dt><dd>'+v+'</dd>';
 function renderSources(){

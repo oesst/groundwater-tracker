@@ -3,3 +3,4 @@ reference-src/
 .DS_Store
 data/_gruvo_inject.json
 data/_gruvo_full.json
+data/_rivers.json
