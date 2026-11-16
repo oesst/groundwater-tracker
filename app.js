@@ -147,10 +147,11 @@ function draw(){
   OUTLINE.forEach((p,i)=>{const q=plane(p[0],p[1]),s=project(q.x,q.y,0);i?ctx.lineTo(s.sx,s.sy):ctx.moveTo(s.sx,s.sy);});
   ctx.closePath();ctx.fillStyle='#dfe9ec';ctx.fill();ctx.strokeStyle='#b9c8cd';ctx.lineWidth=1.2;ctx.stroke();
 
-  const list=shown().map(st=>{const q=plane(st.lon,st.lat);return {st,q,depth:project(q.x,q.y,0).depth};})
-    .sort((a,b)=>b.depth-a.depth);
   hitList.length=0;
   const flat=S.pitch>1.45;
+  if(S.layer==='rivers'){ drawRivers(flat); return; }
+  const list=shown().map(st=>{const q=plane(st.lon,st.lat);return {st,q,depth:project(q.x,q.y,0).depth};})
+    .sort((a,b)=>b.depth-a.depth);
   for(const {st,q} of list){
     const base=project(q.x,q.y,0),top=project(q.x,q.y,heightUnit(st)*MAXBAR);
     const _m=12*S.zoom;                                   // cull fully off-screen bars
@@ -179,6 +180,73 @@ function draw(){
     }
     hitList.push({st,x:base.sx,yTop:Math.min(base.sy,top.sy),yBase:base.sy});
   }
+}
+/* ---------- rivers: course line + "water wall" whose height follows the level ---------- */
+const MAXBAR_R=1.4;                 // wall height scale
+const GAP=0.8, SUB=8;               // break rivers on >~85 km jumps; Catmull-Rom subdivisions
+function lerp(a,b,t){return a+(b-a)*t;}
+function lerpHex(h1,h2,t){const a=parseInt(h1.slice(1),16),b=parseInt(h2.slice(1),16);
+  const r=Math.round(lerp(a>>16,b>>16,t)),g=Math.round(lerp((a>>8)&255,(b>>8)&255,t)),bl=Math.round(lerp(a&255,b&255,t));
+  return '#'+((1<<24)+(r<<16)+(g<<8)+bl).toString(16).slice(1);}
+function cr(p0,p1,p2,p3,t){const t2=t*t,t3=t2*t;return 0.5*((2*p1)+(-p0+p2)*t+(2*p0-5*p1+4*p2-p3)*t2+(-p0+3*p1-3*p2+p3)*t3);}
+const levelOf=st=>0.15+0.85*((st.pct==null?0:st.pct)/100);   // floor so even low water shows a wall
+const hexOf=st=>CLASS_BY[st.cls]?CLASS_BY[st.cls].hex:'#9aa7ad';
+
+function drawRivers(flat){
+  // group gauges by river, order by river-km, split on big geographic gaps
+  const groups=new Map();
+  for(const st of shown()){ const k=st.state||'?'; (groups.get(k)||groups.set(k,[]).get(k)).push(st); }
+  const runs=[];
+  for(const [,arr] of groups){
+    arr.sort((a,b)=>(a.km==null?1e9:a.km)-(b.km==null?1e9:b.km));
+    let cur=[];
+    for(let i=0;i<arr.length;i++){
+      if(cur.length){ const p=cur[cur.length-1];
+        if(Math.hypot((arr[i].lon-p.lon)*KX, arr[i].lat-p.lat)>GAP){ if(cur.length)runs.push(cur); cur=[]; } }
+      cur.push(arr[i]);
+    }
+    if(cur.length) runs.push(cur);
+  }
+  // build geometry, depth-sort runs back-to-front
+  const draws=[];
+  for(const g of runs){
+    if(g.length===1){ const q=plane(g[0].lon,g[0].lat); draws.push({single:g[0],depth:project(q.x,q.y,0).depth}); continue; }
+    const P=g.map(st=>{const q=plane(st.lon,st.lat);return {x:q.x,y:q.y,L:levelOf(st),hex:hexOf(st)};});
+    const samp=[];
+    for(let i=0;i<P.length-1;i++){const p0=P[i-1]||P[i],p1=P[i],p2=P[i+1],p3=P[i+2]||P[i+1];
+      for(let k=0;k<SUB;k++){const t=k/SUB;
+        samp.push({x:cr(p0.x,p1.x,p2.x,p3.x,t),y:cr(p0.y,p1.y,p2.y,p3.y,t),L:lerp(p1.L,p2.L,t),hex:lerpHex(p1.hex,p2.hex,t)});}}
+    const last=P[P.length-1]; samp.push({x:last.x,y:last.y,L:last.L,hex:last.hex});
+    let ds=0; for(const s of samp) ds+=project(s.x,s.y,0).depth;
+    draws.push({run:g,samp,depth:ds/samp.length});
+  }
+  draws.sort((a,b)=>b.depth-a.depth);
+
+  for(const d of draws){
+    if(d.single){ drawRiverSingle(d.single,flat); continue; }
+    const base=d.samp.map(s=>project(s.x,s.y,0)), top=d.samp.map(s=>project(s.x,s.y,s.L*MAXBAR_R));
+    if(flat){
+      ctx.lineWidth=4.5*S.zoom;ctx.lineCap='round';ctx.lineJoin='round';
+      for(let i=0;i<base.length-1;i++){ctx.strokeStyle=d.samp[i].hex;ctx.beginPath();ctx.moveTo(base[i].sx,base[i].sy);ctx.lineTo(base[i+1].sx,base[i+1].sy);ctx.stroke();}
+    }else{
+      for(let i=0;i<base.length-1;i++){ctx.beginPath();
+        ctx.moveTo(base[i].sx,base[i].sy);ctx.lineTo(base[i+1].sx,base[i+1].sy);ctx.lineTo(top[i+1].sx,top[i+1].sy);ctx.lineTo(top[i].sx,top[i].sy);ctx.closePath();
+        ctx.fillStyle=d.samp[i].hex;ctx.globalAlpha=.88;ctx.fill();ctx.globalAlpha=1;}
+      ctx.lineJoin='round';
+      ctx.lineWidth=1.5;ctx.beginPath();top.forEach((p,i)=>i?ctx.lineTo(p.sx,p.sy):ctx.moveTo(p.sx,p.sy));ctx.strokeStyle='rgba(18,36,44,.4)';ctx.stroke();
+      ctx.lineWidth=1.3;ctx.beginPath();base.forEach((p,i)=>i?ctx.lineTo(p.sx,p.sy):ctx.moveTo(p.sx,p.sy));ctx.strokeStyle='#3a7ca5';ctx.stroke();
+    }
+    for(const st of d.run){ const q=plane(st.lon,st.lat),b=project(q.x,q.y,0),tp=project(q.x,q.y,levelOf(st)*MAXBAR_R);
+      hitList.push({st,x:b.sx,yTop:Math.min(b.sy,tp.sy),yBase:b.sy});
+      if(st.trend&&!S.dragging){const ay=(flat?b.sy:Math.min(tp.sy,b.sy))-9*S.zoom;drawTrend(b.sx,ay,st.trend);} }
+  }
+}
+function drawRiverSingle(st,flat){
+  const q=plane(st.lon,st.lat),b=project(q.x,q.y,0),tp=project(q.x,q.y,levelOf(st)*MAXBAR_R),col=hexOf(st);
+  if(flat){ctx.fillStyle=col;ctx.beginPath();ctx.arc(b.sx,b.sy,4*S.zoom,0,7);ctx.fill();}
+  else{ctx.lineWidth=5*S.zoom;ctx.lineCap='round';ctx.strokeStyle=col;ctx.beginPath();ctx.moveTo(b.sx,b.sy);ctx.lineTo(tp.sx,tp.sy);ctx.stroke();}
+  hitList.push({st,x:b.sx,yTop:Math.min(b.sy,tp.sy),yBase:b.sy});
+  if(st.trend&&!S.dragging){const ay=(flat?b.sy:Math.min(tp.sy,b.sy))-9*S.zoom;drawTrend(b.sx,ay,st.trend);}
 }
 // Coalesce redraws to one per animation frame; many pointer events then cost one draw.
 let _raf=0;
@@ -254,7 +322,7 @@ function renderDetail(st){
     '<div class="badge" style="background:'+(cls?cls.hex:'#9aa7ad')+';margin-bottom:10px">'+(cls?cls.label:'ohne Klasse')+'</div>'+staleBadge+
     '<dl class="kv">'+
     (isRiver
-      ? kv('Lage MNW–MHW',st.pct==null?'—':st.pct+' %')+kv('Tendenz',TREND_LABEL[st.trend]||'—')
+      ? kv('Lage MNW–MHW',st.pct==null?'—':st.pct+' %')+kv('Tendenz',TREND_LABEL[st.trend]||'—')+kv('Fluss-km',st.km==null?'—':st.km)
       : kv('Perzentil',st.pct==null?'—':st.pct+' %')+kv('m ü. NHN',st.nhn==null?'—':st.nhn+' m')+kv('Flurabstand',st.flur==null?'—':st.flur+' m u. GOK'))
     +kv('Stand',when)+kv('Quelle',src?esc(src.name):st.source)+'</dl>'+staleNote;
 }

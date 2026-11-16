@@ -83,6 +83,7 @@ export default {
         lon: +s.longitude.toFixed(5),
         nhn: null, flur: null,
         pct, cls,
+        km: (typeof s.km === 'number') ? s.km : null,
         trend: trends[idx],
         measured_at: cm.timestamp,
         stale: Number.isFinite(ageH) ? ageH > STALE_HOURS : true,
