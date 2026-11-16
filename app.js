@@ -113,6 +113,10 @@ function applyLayer(){
     rivers ? 'Klasse — Pegel (Wasserstand vs. Mittelwasser)' :
     layer==='national' ? 'Klasse — GRUVO national (nur Monatsmodell)' :
     'Klasse — Grundwasser (Live-Messnetze)';
+  document.getElementById('methodNote').innerHTML =
+    rivers ? 'Oberflächenpegel der WSV: aktueller Wasserstand relativ zum Mittelwasser-Bereich (MNW–MHW). <b>Nicht mit Grundwasser vergleichbar.</b>' :
+    layer==='national' ? 'BGR-Monatsmodell mit eigener Klassifizierung. <b>Nicht direkt mit den Live-Messnetzen vergleichbar:</b> anderes Verfahren, Monatswert statt Tageswert, andere Messstellen und Grundwasserleiter.' :
+    'Gemessene Grundwasserstände der Landesmessnetze — klassifiziert nach dem Perzentil im bisherigen Verlauf jeder Messstelle.';
   renderLegend(); draw();
 }
 const shown=()=>VIS.filter(s=>s.cls?S.active.has(s.cls):true);
