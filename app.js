@@ -14,7 +14,7 @@ const HEIGHT_NOTE={
 };
 
 let DATA={sources:[],stations:[]}, SRC_KIND={}, LIVE_STATES=new Set();
-const S={layer:'best',view:'3d',height:'pct',azimuth:-0.35,pitch:0.62,zoom:1,
+const S={layer:'live',view:'3d',height:'pct',azimuth:-0.35,pitch:0.62,zoom:1,
          activeId:null,hoverId:null,active:new Set(CLASSES.map(c=>c.key))};
 
 const cv=document.getElementById('map'), ctx=cv.getContext('2d');
@@ -83,15 +83,13 @@ function attribution(){
 /* ---------- layers ---------- */
 let VIS=[];
 function applyLayer(){
-  const layer=S.layer;                                  // 'best' | 'national' | 'rivers'
+  const layer=S.layer;                                  // 'live' | 'national' | 'rivers'
   const rivers=layer==='rivers';
   VIS=(DATA.stations||[]).filter(s=>{
     const kind=SRC_KIND[s.source];
-    if(rivers) return kind==='river';                   // Flüsse: only the gauges
-    if(kind==='river') return false;                    // rivers live only in their own layer
-    if(layer==='national') return kind==='model';       // GRUVO national: only the model
-    if(kind!=='model') return true;                     // best: live networks always
-    return !LIVE_STATES.has(s.state);                   // best: GRUVO only in gap states
+    if(layer==='rivers')   return kind==='river';       // Flüsse: only the gauges
+    if(layer==='national') return kind==='model';       // GRUVO: only the monthly model
+    return kind==='state';                              // Grundwasser live: only state networks
   });
   const hs=document.getElementById('heightSel');
   if(rivers){ S.height='pct'; hs.value='pct'; hs.disabled=true; } else { hs.disabled=false; }
@@ -101,7 +99,7 @@ function applyLayer(){
   document.getElementById('ribbonTitle').textContent =
     rivers ? 'Klasse — Pegel (Wasserstand vs. Mittelwasser)' :
     layer==='national' ? 'Klasse — GRUVO national (nur Monatsmodell)' :
-    'Klasse — beste Daten je Region';
+    'Klasse — Grundwasser (Live-Messnetze)';
   renderLegend(); draw();
 }
 const shown=()=>VIS.filter(s=>s.cls?S.active.has(s.cls):true);
