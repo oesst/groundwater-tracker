@@ -13,6 +13,19 @@ const HEIGHT_NOTE={
   flur:'Tiefe zum Wasser. Hoher Balken = tiefes Wasser — läuft der Farbe entgegen.',
 };
 
+// A reading counts as "veraltet" only once it is older than its source's own
+// update cadence (days) — not because a single fetch attempt failed. Keeps
+// recent data (e.g. a network with a short outage) from being wrongly flagged.
+const STALE_DAYS={ pegelonline:3, hh:14, be:14, by:14, ni:16, he:45, bw:75, nw:120, gruvo:75 };
+const DEF_STALE_DAYS=21;
+const ageDaysOf=st=>st.measured_at?(Date.now()-Date.parse(st.measured_at))/86400000:Infinity;
+const isStale=st=>ageDaysOf(st) > (STALE_DAYS[st.source] ?? DEF_STALE_DAYS);
+function agoText(d){ d=Math.round(d);
+  if(d<=0)return 'heute'; if(d===1)return 'vor 1 Tag';
+  if(d<21)return 'vor ~'+d+' Tagen';
+  if(d<60)return 'vor ~'+Math.round(d/7)+' Wochen';
+  return 'vor ~'+Math.round(d/30)+' Monaten'; }
+
 let DATA={sources:[],stations:[]}, SRC_KIND={}, LIVE_STATES=new Set();
 const S={layer:'live',view:'3d',height:'pct',azimuth:-0.35,pitch:0.62,zoom:1,
          activeId:null,hoverId:null,active:new Set(CLASSES.map(c=>c.key))};
@@ -157,11 +170,12 @@ function draw(){
     const _m=12*S.zoom;                                   // cull fully off-screen bars
     if(base.sx+_m<0||base.sx-_m>W||Math.max(base.sy,top.sy)+_m<0||Math.min(base.sy,top.sy)-_m>H) continue;
     const cls=CLASS_BY[st.cls],col=cls?cls.hex:'#9aa7ad';
+    const stl=isStale(st);
     const act=st.id===S.activeId,hov=st.id===S.hoverId,w=(act||hov?9:7)*S.zoom;
     if(flat){
       const rr=(act||hov?7:5.2)*S.zoom;
       ctx.beginPath();ctx.arc(base.sx,base.sy,rr,0,7);
-      if(st.stale){ctx.fillStyle='#fff';ctx.globalAlpha=.9;ctx.fill();ctx.globalAlpha=1;
+      if(stl){ctx.fillStyle='#fff';ctx.globalAlpha=.9;ctx.fill();ctx.globalAlpha=1;
         ctx.setLineDash([3,2]);ctx.lineWidth=2;ctx.strokeStyle=col;ctx.stroke();ctx.setLineDash([]);}
       else{ctx.fillStyle=col;ctx.globalAlpha=.92;ctx.fill();ctx.globalAlpha=1;
         ctx.lineWidth=1.3;ctx.strokeStyle=act?'#12242c':'#fff';ctx.stroke();}
@@ -169,10 +183,10 @@ function draw(){
       if(!S.dragging){ctx.beginPath();ctx.ellipse(base.sx,base.sy,w*0.9,w*0.4,0,0,7);ctx.fillStyle='rgba(18,36,44,.13)';ctx.fill();}
       const topY=Math.min(top.sy,base.sy),colH=Math.abs(base.sy-top.sy);
       roundRect(base.sx-w/2,topY,w,colH+w*0.35,Math.min(w/2,4));
-      ctx.globalAlpha=st.stale?.5:1;ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=1;
-      if(st.stale&&!S.dragging){ctx.setLineDash([3,2]);ctx.lineWidth=1.4;ctx.strokeStyle=shade(col,-40);ctx.stroke();ctx.setLineDash([]);}
+      ctx.globalAlpha=stl?.5:1;ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=1;
+      if(stl&&!S.dragging){ctx.setLineDash([3,2]);ctx.lineWidth=1.4;ctx.strokeStyle=shade(col,-40);ctx.stroke();ctx.setLineDash([]);}
       if(act||hov){ctx.lineWidth=1.6;ctx.strokeStyle='#12242c';ctx.stroke();}
-      if(!S.dragging){ctx.beginPath();ctx.ellipse(base.sx,topY,w/2,w*0.28,0,0,7);ctx.globalAlpha=st.stale?.5:1;ctx.fillStyle=shade(col,20);ctx.fill();ctx.globalAlpha=1;}
+      if(!S.dragging){ctx.beginPath();ctx.ellipse(base.sx,topY,w/2,w*0.28,0,0,7);ctx.globalAlpha=stl?.5:1;ctx.fillStyle=shade(col,20);ctx.fill();ctx.globalAlpha=1;}
     }
     if(S.layer==='rivers' && st.trend && !S.dragging){
       const ay=(flat?base.sy:Math.min(top.sy,base.sy))-9*S.zoom;
@@ -295,7 +309,7 @@ function renderLegend(){
   CLASSES.forEach(cl=>{const it=document.createElement('div');it.className='it'+(S.active.has(cl.key)?'':' off');
     it.innerHTML='<span class="sw" style="background:'+cl.hex+'"></span>'+cl.label+'<span class="n">'+c[cl.key]+'</span>';
     it.onclick=()=>toggle(cl.key);lg.appendChild(it);});
-  const ns=VIS.filter(s=>s.stale).length;
+  const ns=VIS.filter(isStale).length;
   if(ns){const note=document.createElement('div');note.className='it';note.style.cursor='default';
     note.innerHTML='<span class="sw" style="background:#fff;border:1.5px dashed #9aa7ad;box-sizing:border-box"></span>veraltet (letzter Wert)<span class="n">'+ns+'</span>';
     lg.appendChild(note);}
@@ -314,9 +328,10 @@ function renderDetail(st){
   const isRiver=SRC_KIND[st.source]==='river';
   const TREND_LABEL={rising:'steigend ▲',falling:'fallend ▼',stable:'gleichbleibend –'};
   const when=st.measured_at?new Date(st.measured_at).toLocaleDateString('de-DE'):'—';
-  const ageDays=st.measured_at?Math.floor((Date.now()-new Date(st.measured_at))/86400000):null;
-  const staleBadge=st.stale?'<span class="badge" style="background:#d98a00;margin:0 0 10px 8px">veraltet</span>':'';
-  const staleNote=st.stale?'<div class="muted" style="margin:10px 0 0;color:#b06b00;line-height:1.35">Letzter verfügbarer Wert — kein aktueller Messwert (Stand '+when+(ageDays!=null?', vor ~'+Math.max(1,Math.round(ageDays/30))+' Mon.':'')+').</div>':'';
+  const ageDays=st.measured_at?(Date.now()-new Date(st.measured_at))/86400000:null;
+  const stale=isStale(st);
+  const staleBadge=stale?'<span class="badge" style="background:#d98a00;margin:0 0 10px 8px">veraltet</span>':'';
+  const staleNote=stale?'<div class="muted" style="margin:10px 0 0;color:#b06b00;line-height:1.35">Letzter verfügbarer Wert — kein aktueller Messwert (Stand '+when+(ageDays!=null?', '+agoText(ageDays):'')+').</div>':'';
   d.innerHTML='<div style="font-weight:700;font-size:15px;margin-bottom:2px">'+esc(st.name)+'</div>'+
     '<div class="muted" style="margin-bottom:8px">'+esc(st.state||'')+'</div>'+
     '<div class="badge" style="background:'+(cls?cls.hex:'#9aa7ad')+';margin-bottom:10px">'+(cls?cls.label:'ohne Klasse')+'</div>'+staleBadge+
