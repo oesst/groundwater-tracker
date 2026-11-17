@@ -343,7 +343,7 @@ function renderDetail(st){
     '<div class="badge" style="background:'+(cls?cls.hex:'#9aa7ad')+';margin-bottom:10px">'+(cls?cls.label:'ohne Klasse')+'</div>'+staleBadge+
     '<dl class="kv">'+
     (isRiver
-      ? kv('Lage MNW–MHW',st.pct==null?'—':st.pct+' %')+kv('Tendenz',TREND_LABEL[st.trend]||'—')+kv('Fluss-km',st.km==null?'—':st.km)
+      ? kv('Lage MNW–MHW',st.lvl!=null?st.lvl+' %':(st.pct==null?'—':st.pct+' %'))+kv('Tendenz',TREND_LABEL[st.trend]||'—')+kv('Fluss-km',st.km==null?'—':st.km)
       : kv('Perzentil',st.pct==null?'—':st.pct+' %')+kv('m ü. NHN',st.nhn==null?'—':st.nhn+' m')+kv('Flurabstand',st.flur==null?'—':st.flur+' m u. GOK'))
     +kv('Stand',when)+kv('Quelle',src?esc(src.name):st.source)+'</dl>'+staleNote;
 }
@@ -369,10 +369,14 @@ function renderProfile(st){
   const W=960,H=250,L=46,R=20,T=16,B=42, px0=L,px1=W-R,py0=T,py1=H-B;
   let kmin=gs[0].km, kmax=gs[gs.length-1].km; if(kmax<=kmin) kmax=kmin+1;
   const xs=km=>px0+(km-kmin)/(kmax-kmin)*(px1-px0);
-  const ys=p=>py1-(Math.max(0,Math.min(100,p))/100)*(py1-py0);
+  const valOf=s=>(s.lvl!=null?s.lvl:s.pct);
+  let vlo=0, vhi=100; for(const s of gs){ const v=valOf(s); if(v<vlo)vlo=v; if(v>vhi)vhi=v; }
+  const pad=Math.max(5,(vhi-vlo)*0.08), dlo=vlo-pad, dhi=vhi+pad;
+  const ys=v=>py1-((v-dlo)/(dhi-dlo))*(py1-py0);
   let g='';
-  for(const p of [0,25,50,75,100]){ const y=ys(p);
-    g+='<line x1="'+px0+'" y1="'+y.toFixed(1)+'" x2="'+px1+'" y2="'+y.toFixed(1)+'" stroke="#e4ebee" stroke-width="1"/>';
+  const t0=Math.floor(dlo/25)*25, t1=Math.ceil(dhi/25)*25;
+  for(let p=t0;p<=t1;p+=25){ const y=ys(p); if(y<py0-1||y>py1+1) continue; const maj=(p===0||p===100);
+    g+='<line x1="'+px0+'" y1="'+y.toFixed(1)+'" x2="'+px1+'" y2="'+y.toFixed(1)+'" stroke="'+(maj?'#cbd6da':'#eaf0f2')+'" stroke-width="1"'+(maj?'':' stroke-dasharray="2 3"')+'/>';
     g+='<text x="'+(px0-6)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a99a0">'+p+'</text>';
   }
   g+='<text x="'+px1+'" y="'+(ys(0)+14).toFixed(1)+'" text-anchor="end" font-size="9.5" fill="#9aa7ad">MNW</text>';
@@ -381,17 +385,17 @@ function renderProfile(st){
     g+='<text x="'+x.toFixed(1)+'" y="'+(H-16)+'" text-anchor="middle" font-size="10" fill="#8a99a0">'+km.toFixed(0)+'</text>';
   }
   g+='<text x="'+((px0+px1)/2).toFixed(0)+'" y="'+(H-2)+'" text-anchor="middle" font-size="10.5" fill="#64757c">Fluss-km</text>';
-  const pts=gs.map(s=>xs(s.km).toFixed(1)+','+ys(s.pct).toFixed(1)).join(' ');
+  const pts=gs.map(s=>xs(s.km).toFixed(1)+','+ys(valOf(s)).toFixed(1)).join(' ');
   g+='<polyline points="'+pts+'" fill="none" stroke="#a8bbc2" stroke-width="1.6"/>';
-  for(const s of gs){ const x=xs(s.km),y=ys(s.pct),sel=s.id===st.id,
+  for(const s of gs){ const x=xs(s.km),y=ys(valOf(s)),sel=s.id===st.id,
     col=CLASS_BY[s.cls]?CLASS_BY[s.cls].hex:'#9aa7ad', lab=CLASS_BY[s.cls]?CLASS_BY[s.cls].label:'—',
     tr=s.trend==='rising'?' · steigend':s.trend==='falling'?' · fallend':'';
     g+='<circle class="pt" data-id="'+esc(s.id)+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(sel?6:3.6)
       +'" fill="'+col+'" stroke="'+(sel?'#12242c':'#fff')+'" stroke-width="'+(sel?2:1)
-      +'"><title>'+esc(s.name)+' · km '+s.km+' · '+s.pct+'% · '+lab+tr+'</title></circle>';
+      +'"><title>'+esc(s.name)+' · km '+s.km+' · '+valOf(s)+'% · '+lab+tr+'</title></circle>';
   }
   const selx=xs(st.km);
-  g+='<text x="'+selx.toFixed(1)+'" y="'+(ys(st.pct)-10).toFixed(1)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="#12242c">'+esc(st.name)+'</text>';
+  g+='<text x="'+selx.toFixed(1)+'" y="'+(ys(valOf(st))-10).toFixed(1)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="#12242c">'+esc(st.name)+'</text>';
   document.getElementById('profile').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Längsprofil">'+g+'</svg>';
   document.getElementById('profileTitle').textContent='Längsprofil — '+river+' ('+gs.length+' Pegel)';
   panel.style.display='';

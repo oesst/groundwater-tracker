@@ -51,7 +51,8 @@
   .src-credits{margin:6px 0 4px;padding-left:18px}.src-credits li{margin:2px 0}
   .src-note{margin:6px 0 0;opacity:.85}
   .methodnote{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);line-height:1.45;font-size:12px}
-  .profile-panel{margin-top:14px}
+  .leftcol{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .profile-panel{margin:0}
   #profile svg{display:block;width:100%;height:auto}
   #profile .pt{cursor:pointer}
   .disclaimer{margin:10px 0 2px;padding:9px 12px;border-left:3px solid var(--line-strong);background:#f4f7f8;border-radius:6px;color:var(--ink-soft)}.disclaimer b{color:var(--ink)}
@@ -71,6 +72,7 @@
   <div class="banner" id="banner"></div>
 
   <div class="grid">
+    <div class="leftcol">
     <div class="panel mapwrap">
       <canvas id="map"></canvas>
       <div class="overlay">
@@ -86,6 +88,14 @@
       </div>
       <div class="tip" id="tip"></div>
       <div class="hint">Ziehen = drehen/neigen · Rad = zoomen</div>
+    </div>
+    <div class="panel profile-panel" id="profilePanel" style="display:none">
+      <div class="card" style="border-bottom:none">
+        <h3 id="profileTitle"></h3>
+        <div id="profile"></div>
+        <div class="muted" style="margin-top:6px">Lage jedes Pegels im MNW–MHW-Band entlang des Flusskilometers · 0 % = MNW, 100 % = MHW, negative Werte = unter mittlerem Niedrigwasser · Punkt anklicken zum Auswählen.</div>
+      </div>
+    </div>
     </div>
 
     <div class="panel">
@@ -112,14 +122,6 @@
         <h3>Datenquellen</h3>
         <div id="sources"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="panel profile-panel" id="profilePanel" style="display:none">
-    <div class="card" style="border-bottom:none">
-      <h3 id="profileTitle"></h3>
-      <div id="profile"></div>
-      <div class="muted" style="margin-top:6px">Lage jedes Pegels im MNW–MHW-Band entlang des Flusskilometers · Punkt anklicken zum Auswählen.</div>
     </div>
   </div>
 

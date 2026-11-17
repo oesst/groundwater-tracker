@@ -20,12 +20,14 @@ const TREND_DEADBAND_CM = 1;
 function classOf(value, cv) {
   const { MNW, MW, MHW, NW, HW } = cv;
   if (MNW == null || MHW == null || MHW <= MNW) return { cls: null, pct: null };
-  const pct = Math.round(Math.max(0, Math.min(100, (100 * (value - MNW)) / (MHW - MNW))));
+  const raw = (100 * (value - MNW)) / (MHW - MNW);     // may be <0 (below MNW) or >100 (above MHW)
+  const pct = Math.round(Math.max(0, Math.min(100, raw)));
+  const lvl = Math.round(raw);                          // unclamped, for the longitudinal profile
   let cls;
   if (value <= MNW)      cls = (NW != null && value <= NW + (MNW - NW) * 0.25) ? 'vlow' : 'low';
   else if (value >= MHW) cls = (HW != null && value >= MHW + (HW - MHW) * 0.5) ? 'vhigh' : 'high';
   else                   cls = 'normal';
-  return { cls, pct };
+  return { cls, pct, lvl };
 }
 
 async function trendOf(uuid) {
@@ -62,9 +64,9 @@ export default {
       if (!cm || !Number.isFinite(s.latitude) || !Number.isFinite(s.longitude)) continue;
       const cv = {};
       for (const c of (w.characteristicValues || [])) cv[c.shortname] = c.value;
-      const { cls, pct } = classOf(cm.value, cv);
+      const { cls, pct, lvl } = classOf(cm.value, cv);
       if (!cls) continue;                               // no MNW/MHW reference -> skip
-      kept.push({ s, cm, cls, pct });
+      kept.push({ s, cm, cls, pct, lvl });
     }
 
     // tendency, with limited concurrency
@@ -73,7 +75,7 @@ export default {
     const worker = async () => { while (i < kept.length) { const idx = i++; trends[idx] = await trendOf(kept[idx].s.uuid); } };
     await Promise.all(Array.from({ length: Math.min(TREND_CONCURRENCY, kept.length) }, worker));
 
-    const out = kept.map(({ s, cm, cls, pct }, idx) => {
+    const out = kept.map(({ s, cm, cls, pct, lvl }, idx) => {
       const ageH = (now - Date.parse(cm.timestamp)) / 3600000;
       return {
         id: `pegel-${s.number || s.uuid}`,
@@ -82,7 +84,7 @@ export default {
         lat: +s.latitude.toFixed(5),
         lon: +s.longitude.toFixed(5),
         nhn: null, flur: null,
-        pct, cls,
+        pct, cls, lvl,
         km: (typeof s.km === 'number') ? s.km : null,
         trend: trends[idx],
         measured_at: cm.timestamp,
