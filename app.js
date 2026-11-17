@@ -117,6 +117,7 @@ function applyLayer(){
     rivers ? 'Oberflächenpegel der WSV: aktueller Wasserstand relativ zum Mittelwasser-Bereich (MNW–MHW). <b>Nicht mit Grundwasser vergleichbar.</b>' :
     layer==='national' ? 'BGR-Monatsmodell mit eigener Klassifizierung. <b>Nicht direkt mit den Live-Messnetzen vergleichbar:</b> anderes Verfahren, Monatswert statt Tageswert, andere Messstellen und Grundwasserleiter.' :
     'Gemessene Grundwasserstände der Landesmessnetze — klassifiziert nach dem Perzentil im bisherigen Verlauf jeder Messstelle.';
+  if(S.layer!=='rivers') document.getElementById('profilePanel').style.display='none';
   renderLegend(); draw();
 }
 const shown=()=>VIS.filter(s=>s.cls?S.active.has(s.cls):true);
@@ -288,7 +289,7 @@ cv.addEventListener('pointermove',e=>{
     else if(S.hoverId){S.hoverId=null;tip.style.opacity=0;requestDraw();}}
 });
 cv.addEventListener('pointerup',e=>{S.dragging=false;if(drag&&!drag.moved){const r=cv.getBoundingClientRect();
-  const st=pick(e.clientX-r.left,e.clientY-r.top);S.activeId=st?st.id:null;renderDetail(st);}drag=null;draw();});
+  const st=pick(e.clientX-r.left,e.clientY-r.top);S.activeId=st?st.id:null;renderDetail(st);renderProfile(st);}drag=null;draw();});
 cv.addEventListener('pointerleave',()=>{S.hoverId=null;S.dragging=false;document.getElementById('tip').style.opacity=0;requestDraw();});
 cv.addEventListener('wheel',e=>{e.preventDefault();S.zoom=Math.max(0.5,Math.min(3.2,S.zoom*(e.deltaY<0?1.1:0.9)));requestDraw();},{passive:false});
 
@@ -301,6 +302,7 @@ function wireUI(){
     S.layer=b.dataset.layer;document.querySelectorAll('#layerSeg button').forEach(x=>x.classList.toggle('on',x===b));applyLayer();});
   document.getElementById('heightSel').addEventListener('change',e=>{S.height=e.target.value;
     document.getElementById('heightNote').textContent=HEIGHT_NOTE[S.height];draw();});
+  document.getElementById('profile').addEventListener('click',e=>{const c=e.target.closest('.pt');if(!c)return;const st=(DATA.stations||[]).find(s=>s.id===c.dataset.id);if(st){S.activeId=st.id;renderDetail(st);renderProfile(st);draw();}});
   window.addEventListener('resize',resize);
 }
 function renderLegend(){
@@ -355,5 +357,44 @@ function renderSources(){
       '<span class="cnt">'+(a.count||0)+'</span>';el.appendChild(div);});
 }
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- river longitudinal profile (below the map) ---------- */
+function renderProfile(st){
+  const panel=document.getElementById('profilePanel');
+  if(!st || SRC_KIND[st.source]!=='river'){ panel.style.display='none'; return; }
+  const river=st.state;
+  const gs=(DATA.stations||[]).filter(s=>s.source===st.source && s.state===river && s.km!=null && s.pct!=null)
+    .sort((a,b)=>a.km-b.km);
+  if(gs.length<2){ panel.style.display='none'; return; }
+  const W=960,H=250,L=46,R=20,T=16,B=42, px0=L,px1=W-R,py0=T,py1=H-B;
+  let kmin=gs[0].km, kmax=gs[gs.length-1].km; if(kmax<=kmin) kmax=kmin+1;
+  const xs=km=>px0+(km-kmin)/(kmax-kmin)*(px1-px0);
+  const ys=p=>py1-(Math.max(0,Math.min(100,p))/100)*(py1-py0);
+  let g='';
+  for(const p of [0,25,50,75,100]){ const y=ys(p);
+    g+='<line x1="'+px0+'" y1="'+y.toFixed(1)+'" x2="'+px1+'" y2="'+y.toFixed(1)+'" stroke="#e4ebee" stroke-width="1"/>';
+    g+='<text x="'+(px0-6)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a99a0">'+p+'</text>';
+  }
+  g+='<text x="'+px1+'" y="'+(ys(0)+14).toFixed(1)+'" text-anchor="end" font-size="9.5" fill="#9aa7ad">MNW</text>';
+  g+='<text x="'+px1+'" y="'+(ys(100)-5).toFixed(1)+'" text-anchor="end" font-size="9.5" fill="#9aa7ad">MHW</text>';
+  for(let i=0;i<=5;i++){ const km=kmin+(kmax-kmin)*i/5, x=xs(km);
+    g+='<text x="'+x.toFixed(1)+'" y="'+(H-16)+'" text-anchor="middle" font-size="10" fill="#8a99a0">'+km.toFixed(0)+'</text>';
+  }
+  g+='<text x="'+((px0+px1)/2).toFixed(0)+'" y="'+(H-2)+'" text-anchor="middle" font-size="10.5" fill="#64757c">Fluss-km</text>';
+  const pts=gs.map(s=>xs(s.km).toFixed(1)+','+ys(s.pct).toFixed(1)).join(' ');
+  g+='<polyline points="'+pts+'" fill="none" stroke="#a8bbc2" stroke-width="1.6"/>';
+  for(const s of gs){ const x=xs(s.km),y=ys(s.pct),sel=s.id===st.id,
+    col=CLASS_BY[s.cls]?CLASS_BY[s.cls].hex:'#9aa7ad', lab=CLASS_BY[s.cls]?CLASS_BY[s.cls].label:'—',
+    tr=s.trend==='rising'?' · steigend':s.trend==='falling'?' · fallend':'';
+    g+='<circle class="pt" data-id="'+esc(s.id)+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(sel?6:3.6)
+      +'" fill="'+col+'" stroke="'+(sel?'#12242c':'#fff')+'" stroke-width="'+(sel?2:1)
+      +'"><title>'+esc(s.name)+' · km '+s.km+' · '+s.pct+'% · '+lab+tr+'</title></circle>';
+  }
+  const selx=xs(st.km);
+  g+='<text x="'+selx.toFixed(1)+'" y="'+(ys(st.pct)-10).toFixed(1)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="#12242c">'+esc(st.name)+'</text>';
+  document.getElementById('profile').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Längsprofil">'+g+'</svg>';
+  document.getElementById('profileTitle').textContent='Längsprofil — '+river+' ('+gs.length+' Pegel)';
+  panel.style.display='';
+}
 
 boot();
